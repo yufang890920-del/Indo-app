@@ -15,133 +15,111 @@
 html,body{height:100%;overflow:hidden;background:#c0392b}
 body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif}
 #app{display:flex;flex-direction:column;height:100vh;height:-webkit-fill-available;max-width:480px;margin:0 auto;background:#f8f6f1}
-
 .hdr{background:linear-gradient(135deg,#c0392b,#e74c3c);padding:env(safe-area-inset-top,0px) 16px 10px;padding-top:calc(env(safe-area-inset-top,0px) + 12px);color:#fff;flex-shrink:0}
 .hdr h1{font-size:17px;font-weight:700}
 .hdr p{font-size:11px;opacity:.8;margin-top:2px}
-
 .tabs{display:flex;background:#fff;border-bottom:1px solid #eee;flex-shrink:0}
-.tab{flex:1;padding:10px 4px 8px;font-size:11px;text-align:center;cursor:pointer;color:#999;border-bottom:2px solid transparent}
-.tab svg{display:block;margin:0 auto 3px;width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+.tab{flex:1;padding:9px 2px 7px;font-size:10px;text-align:center;cursor:pointer;color:#999;border-bottom:2px solid transparent}
+.tab svg{display:block;margin:0 auto 2px;width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
 .tab.on{color:#c0392b;border-bottom-color:#c0392b;font-weight:600}
-
 .pages{flex:1;overflow:hidden;position:relative}
 .pg{position:absolute;inset:0;overflow-y:auto;padding:12px 12px calc(12px + env(safe-area-inset-bottom,0px));display:none;-webkit-overflow-scrolling:touch}
 .pg.on{display:block}
-
-/* Scene grid */
 .scene-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .scene-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08);cursor:pointer;position:relative}
 .scene-card:active{transform:scale(.97)}
-.scene-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-size:48px}
-.scene-info{padding:8px 10px 10px}
+.scene-thumb{height:95px;display:flex;align-items:center;justify-content:center;font-size:44px}
+.scene-info{padding:7px 9px 9px}
 .scene-title{font-size:13px;font-weight:600;color:#222}
-.scene-sub{font-size:11px;color:#888;margin-top:2px}
-.scene-badge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.45);color:#fff;font-size:10px;padding:2px 6px;border-radius:10px}
-.scene-done{position:absolute;top:8px;left:8px;background:#27ae60;color:#fff;font-size:10px;padding:2px 6px;border-radius:10px}
-
-/* Scene detail / illustration */
+.scene-sub{font-size:11px;color:#888;margin-top:1px}
+.scene-badge{position:absolute;top:7px;right:7px;background:rgba(0,0,0,.45);color:#fff;font-size:10px;padding:2px 6px;border-radius:10px}
+.scene-done{position:absolute;top:7px;left:7px;background:#27ae60;color:#fff;font-size:10px;padding:2px 6px;border-radius:10px}
 .scene-detail{display:none}
 .scene-detail.on{display:block}
 .back-btn{display:flex;align-items:center;gap:6px;color:#c0392b;font-size:13px;font-weight:600;margin-bottom:12px;cursor:pointer;padding:4px 0}
-.scene-illustration{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.1);margin-bottom:12px;overflow:hidden;position:relative}
+.scene-illustration{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.1);margin-bottom:12px;overflow:hidden}
 .scene-illustration svg{width:100%;height:auto;display:block}
-
-/* Word tooltip */
-.word-pin{cursor:pointer}
-.word-pin circle{transition:r .15s}
-.word-pin:active circle{r:10}
-.pin-label{pointer-events:none}
-
-/* Word list in scene */
 .scene-words{background:#fff;border-radius:14px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.scene-words h3{font-size:13px;font-weight:600;color:#666;margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px}
+.scene-words h3{font-size:12px;font-weight:600;color:#666;margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px}
 .word-row{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid #f5f5f5;cursor:pointer;gap:10px}
 .word-row:last-child{border-bottom:none}
-.word-row:active{background:#fef9f9}
-.wr-num{font-size:11px;color:#ccc;min-width:20px}
-.wr-indo{font-size:15px;font-weight:600;color:#c0392b;flex:1}
-.wr-cn{font-size:13px;color:#555;flex:1}
+.word-row:active{background:#fef5f5}
+.wr-num{font-size:10px;color:#ccc;min-width:18px}
+.wr-indo{font-size:14px;font-weight:600;color:#c0392b;flex:1}
 .wr-ph{font-size:11px;color:#aaa;flex:1}
+.wr-cn{font-size:12px;color:#555;flex:1}
 .wr-play{color:#c0392b;flex-shrink:0}
-.learned-dot{width:7px;height:7px;border-radius:50%;background:#27ae60;display:inline-block;margin-left:5px;vertical-align:middle}
-
-/* Flashcard */
-.flashcard{background:#fff;border-radius:18px;padding:28px 20px;text-align:center;margin-bottom:14px;box-shadow:0 3px 16px rgba(0,0,0,.1);min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:center}
-.fc-scene{font-size:40px;margin-bottom:8px}
-.fc-indo{font-size:32px;font-weight:700;color:#c0392b;margin-bottom:6px}
-.fc-ph{font-size:14px;color:#aaa;margin-bottom:10px}
-.fc-cn{font-size:20px;color:#333;font-weight:500;margin-bottom:10px}
+.ldot{width:7px;height:7px;border-radius:50%;background:#27ae60;display:inline-block;margin-left:5px;vertical-align:middle}
+.flashcard{background:#fff;border-radius:18px;padding:26px 18px;text-align:center;margin-bottom:12px;box-shadow:0 3px 16px rgba(0,0,0,.1);min-height:195px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.fc-scene{font-size:38px;margin-bottom:7px}
+.fc-indo{font-size:28px;font-weight:700;color:#c0392b;margin-bottom:4px}
+.fc-ph{font-size:13px;color:#aaa;margin-bottom:8px}
+.fc-cn{font-size:19px;color:#333;font-weight:500;margin-bottom:9px}
 .fc-tag{display:inline-block;font-size:11px;background:#fef0ee;color:#c0392b;padding:3px 10px;border-radius:20px}
-.anim{display:flex;align-items:center;justify-content:center;gap:3px;height:22px;margin-top:8px}
+.anim{display:flex;align-items:center;justify-content:center;gap:3px;height:20px;margin-top:7px}
 .ab{width:4px;background:#c0392b;border-radius:2px;animation:pp .8s ease-in-out infinite}
 .ab:nth-child(2){animation-delay:.15s}
 .ab:nth-child(3){animation-delay:.3s}
 @keyframes pp{0%,100%{height:5px}50%{height:18px}}
 .hid{display:none!important}
-
-/* Stats */
-.srow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
-.st{background:#fff;border-radius:12px;padding:10px 6px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.07)}
-.sn{font-size:22px;font-weight:700;color:#c0392b}
+.srow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:11px}
+.st{background:#fff;border-radius:12px;padding:9px 5px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.sn{font-size:21px;font-weight:700;color:#c0392b}
 .sl{font-size:10px;color:#888;margin-top:2px}
-
-/* Progress */
-.pbar{height:5px;background:#eee;border-radius:3px;margin-bottom:12px;overflow:hidden}
+.pbar{height:5px;background:#eee;border-radius:3px;margin-bottom:11px;overflow:hidden}
 .pfill{height:100%;background:linear-gradient(90deg,#c0392b,#e74c3c);border-radius:3px;transition:width .4s}
-
-/* Buttons */
 .br{display:flex;gap:8px;margin-bottom:8px}
-.btn{flex:1;padding:11px 8px;border-radius:12px;border:none;cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;background:#f0eeea;color:#444;-webkit-appearance:none;transition:opacity .15s}
+.btn{flex:1;padding:10px 7px;border-radius:12px;border:none;cursor:pointer;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;background:#f0eeea;color:#444;-webkit-appearance:none;transition:opacity .15s}
 .btn:active{opacity:.7}
 .btn.r{background:#c0392b;color:#fff}
-.btn.g{background:#27ae60;color:#fff}
 .btn.b{background:#2980b9;color:#fff}
-
-/* Quiz */
-.qq{font-size:22px;font-weight:700;text-align:center;margin:12px 0 4px;color:#222;line-height:1.4}
-.qs{font-size:12px;color:#888;text-align:center;margin-bottom:12px}
-.qo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.qb{padding:13px 8px;border-radius:12px;border:1.5px solid #e8e8e8;cursor:pointer;font-size:13px;text-align:center;background:#fff;color:#333;font-weight:500;-webkit-appearance:none}
+.mt{display:flex;background:#e8e6e2;border-radius:10px;padding:3px;margin-bottom:11px}
+.mb{flex:1;padding:6px;text-align:center;font-size:11px;border-radius:8px;cursor:pointer;color:#666;font-weight:500}
+.mb.on{background:#fff;color:#c0392b;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.qq{font-size:21px;font-weight:700;text-align:center;margin:11px 0 3px;color:#222;line-height:1.4}
+.qs{font-size:11px;color:#888;text-align:center;margin-bottom:11px}
+.qo{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:11px}
+.qb{padding:12px 7px;border-radius:12px;border:1.5px solid #e8e8e8;cursor:pointer;font-size:12px;text-align:center;background:#fff;color:#333;font-weight:500;-webkit-appearance:none}
 .qb:active{opacity:.7}
 .qb.ok{background:#e8f8ee;border-color:#27ae60;color:#27ae60}
 .qb.no{background:#fdecea;border-color:#c0392b;color:#c0392b}
-.mt{display:flex;background:#e8e6e2;border-radius:10px;padding:3px;margin-bottom:12px}
-.mb{flex:1;padding:7px;text-align:center;font-size:12px;border-radius:8px;cursor:pointer;color:#666;font-weight:500}
-.mb.on{background:#fff;color:#c0392b;box-shadow:0 1px 3px rgba(0,0,0,.1)}
-
 .qempty{text-align:center;padding:40px 20px;color:#aaa}
-.qempty .icon{font-size:52px;margin-bottom:12px}
+.qempty .icon{font-size:50px;margin-bottom:12px}
 .qempty p{font-size:15px;color:#444;margin-bottom:8px;font-weight:600}
-.qempty span{font-size:13px;line-height:1.7;color:#888}
-
-.hint{font-size:11px;color:#aaa;text-align:center;padding:8px 0}
+.qempty span{font-size:12px;line-height:1.7;color:#888}
+.hint{font-size:11px;color:#aaa;text-align:center;padding:7px 0}
 .badge{font-size:11px;background:#eee;color:#888;padding:3px 9px;border-radius:10px;margin-bottom:8px;display:inline-block}
-
-/* Progress unlock banner */
-.unlock-banner{background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:14px;padding:14px 16px;margin-bottom:12px;color:#fff;display:flex;align-items:center;gap:12px}
-.unlock-banner .icon{font-size:32px;flex-shrink:0}
-.unlock-banner h3{font-size:14px;font-weight:700;margin-bottom:3px}
-.unlock-banner p{font-size:12px;opacity:.9}
-
-select{width:100%;padding:10px 12px;border-radius:12px;border:1.5px solid #e0e0e0;font-size:13px;background:#fff;color:#333;margin-bottom:10px;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.unlock-banner{background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:14px;padding:13px 15px;margin-bottom:12px;color:#fff;display:flex;align-items:center;gap:12px}
+.unlock-banner .icon{font-size:30px;flex-shrink:0}
+.unlock-banner h3{font-size:13px;font-weight:700;margin-bottom:2px}
+.unlock-banner p{font-size:11px;opacity:.9}
+select{width:100%;padding:9px 12px;border-radius:12px;border:1.5px solid #e0e0e0;font-size:12px;background:#fff;color:#333;margin-bottom:9px;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
 .wl{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.sent-card{background:#fff;border-radius:14px;padding:13px;margin-bottom:9px;box-shadow:0 2px 8px rgba(0,0,0,.07);cursor:pointer}
+.sent-card:active{opacity:.85}
+.sent-indo{font-size:15px;font-weight:700;color:#c0392b;margin-bottom:4px;line-height:1.5}
+.sent-ph{font-size:11px;color:#aaa;margin-bottom:4px;line-height:1.5}
+.sent-cn{font-size:13px;color:#333;font-weight:500;margin-bottom:5px}
+.sent-footer{display:flex;align-items:center;justify-content:space-between}
+.sent-scene{font-size:11px;background:#fef0ee;color:#c0392b;padding:2px 8px;border-radius:10px}
+.word-pin{cursor:pointer}
 </style>
 </head>
 <body>
 <div id="app">
-
 <div class="hdr">
   <h1>🇮🇩 Bahasa Indonesia &nbsp;印尼语学习</h1>
-  <p>场景图片法 · 先学150核心词 · 再学1000词</p>
+  <p>场景图片法 · 150核心词 · 150句 · 进度自动保存</p>
 </div>
-
 <div class="tabs">
   <div class="tab on" onclick="go('scene')" id="t-scene">
     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>场景
   </div>
   <div class="tab" onclick="go('cards')" id="t-cards">
     <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>单词卡
+  </div>
+  <div class="tab" onclick="go('sents')" id="t-sents">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>句子
   </div>
   <div class="tab" onclick="go('words')" id="t-words">
     <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>词库
@@ -150,19 +128,14 @@ select{width:100%;padding:10px 12px;border-radius:12px;border:1.5px solid #e0e0e
     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>测试
   </div>
 </div>
-
 <div class="pages">
 
-<!-- 场景页 -->
 <div class="pg on" id="p-scene">
   <div id="scene-list-view">
     <div class="srow">
       <div class="st"><div class="sn" id="sl">0</div><div class="sl">已学词</div></div>
       <div class="st"><div class="sn" id="ss">0/12</div><div class="sl">场景</div></div>
-      <div class="st" onclick="resetProgress()" style="cursor:pointer">
-        <div class="sn" style="font-size:20px">🔄</div>
-        <div class="sl">重置进度</div>
-      </div>
+      <div class="st" onclick="resetProgress()" style="cursor:pointer"><div class="sn" style="font-size:19px">🔄</div><div class="sl">重置</div></div>
     </div>
     <div class="pbar"><div class="pfill" id="pf" style="width:0%"></div></div>
     <div id="unlock-area"></div>
@@ -170,14 +143,12 @@ select{width:100%;padding:10px 12px;border-radius:12px;border:1.5px solid #e0e0e
   </div>
   <div id="scene-detail-view" class="scene-detail">
     <div class="back-btn" onclick="backToScenes()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-      返回场景列表
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>返回场景列表
     </div>
     <div id="scene-content"></div>
   </div>
 </div>
 
-<!-- 单词卡页 -->
 <div class="pg" id="p-cards">
   <div class="srow">
     <div class="st"><div class="sn" id="cl">0</div><div class="sl">已学</div></div>
@@ -185,17 +156,17 @@ select{width:100%;padding:10px 12px;border-radius:12px;border:1.5px solid #e0e0e
     <div class="st"><div class="sn" id="ctotal">150</div><div class="sl">总词数</div></div>
   </div>
   <div class="pbar"><div class="pfill" id="cpf" style="width:0%"></div></div>
-  <div class="flashcard" id="fc">
-    <div class="fc-scene" id="fc-scene">🏠</div>
-    <div class="fc-indo" id="fc-indo">rumah</div>
-    <div class="fc-ph" id="fc-ph">ru-mah</div>
-    <div class="fc-cn" id="fc-cn">家/房子</div>
-    <div class="fc-tag" id="fc-tag">地点</div>
+  <div class="flashcard">
+    <div class="fc-scene" id="fc-scene">👋</div>
+    <div class="fc-indo" id="fc-indo">halo</div>
+    <div class="fc-ph" id="fc-ph">ha-lo</div>
+    <div class="fc-cn" id="fc-cn">你好</div>
+    <div class="fc-tag" id="fc-tag">打招呼</div>
     <div class="anim hid" id="fc-anim"><div class="ab"></div><div class="ab"></div><div class="ab"></div></div>
   </div>
   <div class="br">
     <button class="btn b" onclick="spCard()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>听发音
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>听发音
     </button>
     <button class="btn r" onclick="nextCard()">下一个 →</button>
   </div>
@@ -206,16 +177,18 @@ select{width:100%;padding:10px 12px;border-radius:12px;border:1.5px solid #e0e0e
   <div class="hint" id="card-hint">每翻一张卡片即记为已学</div>
 </div>
 
-<!-- 词库页 -->
+<div class="pg" id="p-sents">
+  <select id="scat" onchange="renderSents()"><option value="">全部场景句子</option></select>
+  <div class="badge" id="sbadge">150句</div>
+  <div id="sent-list"></div>
+</div>
+
 <div class="pg" id="p-words">
-  <select id="wcat" onchange="renderWordList()">
-    <option value="">全部场景词汇</option>
-  </select>
+  <select id="wcat" onchange="renderWordList()"><option value="">全部词汇</option></select>
   <div class="badge" id="wbadge">150个词</div>
   <div class="wl" id="wl"></div>
 </div>
 
-<!-- 测试页 -->
 <div class="pg" id="p-quiz">
   <div class="mt">
     <div class="mb on" onclick="setQ('i2c')" id="qi">印尼→中文</div>
@@ -232,7 +205,7 @@ select{width:100%;padding:10px 12px;border-radius:12px;border:1.5px solid #e0e0e
     <div class="qo" id="qo"></div>
     <div class="br">
       <button class="btn b" onclick="spQuiz()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>听发音
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>听发音
       </button>
       <button class="btn" onclick="refreshQuiz()">换一题</button>
     </div>
@@ -240,880 +213,335 @@ select{width:100%;padding:10px 12px;border-radius:12px;border:1.5px solid #e0e0e
   <div id="quiz-empty" class="qempty hid">
     <div class="icon">📚</div>
     <p>还没有已学词汇</p>
-    <span>先去「场景」或「单词卡」模式<br>学几个词，回来就可以测试了！</span>
+    <span>先去「场景」逛一逛，<br>词汇会自动记录！</span>
   </div>
-  <div class="hint" id="qh">只测试你已学过的词</div>
+  <div class="hint" id="qh">只测试已学过的词</div>
 </div>
 
 </div>
 </div>
-
 <script>
-// ══════════════════════════════════════════
-// 数据：12个场景，每场景约12词，共~150词
-// 格式: [印尼语, 音节拼读, 中文, 场景key]
-// ══════════════════════════════════════════
-const SCENES = [
-  {
-    key:'home', emoji:'🏠', title:'家里', sub:'房间与家具',
-    color:'#e8f4fd', accent:'#2980b9',
-    words:[
-      ['rumah','ru-mah','家/房子','home'],
-      ['kamar','ka-mar','房间','home'],
-      ['kamar tidur','ka-mar ti-dur','卧室','home'],
-      ['kamar mandi','ka-mar man-di','浴室','home'],
-      ['dapur','da-pur','厨房','home'],
-      ['ruang tamu','ru-ang ta-mu','客厅','home'],
-      ['pintu','pin-tu','门','home'],
-      ['jendela','jen-de-la','窗户','home'],
-      ['meja','me-ja','桌子','home'],
-      ['kursi','kur-si','椅子','home'],
-      ['tempat tidur','tem-pat ti-dur','床','home'],
-      ['lemari','le-ma-ri','衣柜','home'],
-      ['lantai','lan-tai','地板','home'],
-    ],
-    // SVG illustration description for rendering
-    svgKey: 'home'
-  },
-  {
-    key:'food', emoji:'🍽️', title:'吃饭', sub:'食物与餐厅',
-    color:'#fef9ee', accent:'#e67e22',
-    words:[
-      ['nasi','na-si','米饭','food'],
-      ['mie','mi-e','面条','food'],
-      ['ayam','a-yam','鸡肉','food'],
-      ['ikan','i-kan','鱼','food'],
-      ['sayur','sa-yur','蔬菜','food'],
-      ['buah','bu-ah','水果','food'],
-      ['minum','mi-num','喝','food'],
-      ['makan','ma-kan','吃','food'],
-      ['air','a-ir','水','food'],
-      ['kopi','ko-pi','咖啡','food'],
-      ['teh','te','茶','food'],
-      ['enak','e-nak','好吃','food'],
-      ['pedas','pe-das','辣','food'],
-      ['manis','ma-nis','甜','food'],
-    ],
-    svgKey: 'food'
-  },
-  {
-    key:'body', emoji:'🧍', title:'身体', sub:'人体部位',
-    color:'#fef0ee', accent:'#c0392b',
-    words:[
-      ['kepala','ke-pa-la','头','body'],
-      ['mata','ma-ta','眼睛','body'],
-      ['hidung','hi-dung','鼻子','body'],
-      ['mulut','mu-lut','嘴','body'],
-      ['telinga','te-li-nga','耳朵','body'],
-      ['tangan','ta-ngan','手','body'],
-      ['kaki','ka-ki','脚','body'],
-      ['perut','pe-rut','肚子','body'],
-      ['rambut','ram-but','头发','body'],
-      ['gigi','gi-gi','牙齿','body'],
-      ['punggung','pung-gung','背','body'],
-      ['jari','ja-ri','手指','body'],
-    ],
-    svgKey: 'body'
-  },
-  {
-    key:'market', emoji:'🛒', title:'市场购物', sub:'买东西',
-    color:'#eefaf3', accent:'#27ae60',
-    words:[
-      ['pasar','pa-sar','市场','market'],
-      ['toko','to-ko','商店','market'],
-      ['beli','be-li','买','market'],
-      ['jual','ju-al','卖','market'],
-      ['harga','har-ga','价格','market'],
-      ['mahal','ma-hal','贵','market'],
-      ['murah','mu-rah','便宜','market'],
-      ['uang','u-ang','钱','market'],
-      ['berapa','be-ra-pa','多少','market'],
-      ['bayar','ba-yar','付钱','market'],
-      ['diskon','dis-kon','折扣','market'],
-      ['tas','tas','袋/包','market'],
-      ['struk','struk','收据','market'],
-    ],
-    svgKey: 'market'
-  },
-  {
-    key:'family', emoji:'👨‍👩‍👧', title:'家庭', sub:'家人称呼',
-    color:'#fff8ee', accent:'#f39c12',
-    words:[
-      ['keluarga','ke-lu-ar-ga','家庭','family'],
-      ['ayah','a-yah','父亲','family'],
-      ['ibu','i-bu','母亲','family'],
-      ['kakak','ka-kak','兄/姐','family'],
-      ['adik','a-dik','弟/妹','family'],
-      ['anak','a-nak','孩子','family'],
-      ['suami','su-a-mi','丈夫','family'],
-      ['istri','is-tri','妻子','family'],
-      ['kakek','ka-kek','爷爷','family'],
-      ['nenek','ne-nek','奶奶','family'],
-      ['paman','pa-man','叔叔','family'],
-      ['teman','te-man','朋友','family'],
-    ],
-    svgKey: 'family'
-  },
-  {
-    key:'transport', emoji:'🚗', title:'交通出行', sub:'坐车去哪里',
-    color:'#f0f0ff', accent:'#8e44ad',
-    words:[
-      ['jalan','ja-lan','路/走','transport'],
-      ['mobil','mo-bil','汽车','transport'],
-      ['motor','mo-tor','摩托车','transport'],
-      ['bus','bus','公共汽车','transport'],
-      ['taksi','tak-si','出租车','transport'],
-      ['pesawat','pe-sa-wat','飞机','transport'],
-      ['kapal','ka-pal','船','transport'],
-      ['stasiun','sta-si-un','火车站','transport'],
-      ['bandara','ban-da-ra','机场','transport'],
-      ['tiket','ti-ket','票','transport'],
-      ['jauh','ja-uh','远','transport'],
-      ['dekat','de-kat','近','transport'],
-      ['kiri','ki-ri','左','transport'],
-      ['kanan','ka-nan','右','transport'],
-    ],
-    svgKey: 'transport'
-  },
-  {
-    key:'greet', emoji:'👋', title:'打招呼', sub:'问候与日常用语',
-    color:'#f0fff4', accent:'#16a085',
-    words:[
-      ['halo','ha-lo','你好','greet'],
-      ['selamat pagi','se-la-mat pa-gi','早上好','greet'],
-      ['selamat siang','se-la-mat si-ang','中午好','greet'],
-      ['selamat malam','se-la-mat ma-lam','晚上好','greet'],
-      ['terima kasih','te-ri-ma ka-sih','谢谢','greet'],
-      ['sama-sama','sa-ma sa-ma','不客气','greet'],
-      ['maaf','ma-af','对不起','greet'],
-      ['tolong','to-long','请/帮忙','greet'],
-      ['ya','ya','是的','greet'],
-      ['tidak','ti-dak','不是/不','greet'],
-      ['permisi','per-mi-si','打扰/借过','greet'],
-      ['sampai jumpa','sam-pai jum-pa','再见','greet'],
-    ],
-    svgKey: 'greet'
-  },
-  {
-    key:'number', emoji:'🔢', title:'数字时间', sub:'数数和说时间',
-    color:'#f8f0ff', accent:'#9b59b6',
-    words:[
-      ['satu','sa-tu','一','number'],
-      ['dua','du-a','二','number'],
-      ['tiga','ti-ga','三','number'],
-      ['empat','em-pat','四','number'],
-      ['lima','li-ma','五','number'],
-      ['enam','e-nam','六','number'],
-      ['tujuh','tu-juh','七','number'],
-      ['delapan','de-la-pan','八','number'],
-      ['sembilan','sem-bi-lan','九','number'],
-      ['sepuluh','se-pu-luh','十','number'],
-      ['hari','ha-ri','天/日','number'],
-      ['minggu','ming-gu','星期/周','number'],
-      ['bulan','bu-lan','月','number'],
-      ['tahun','ta-hun','年','number'],
-    ],
-    svgKey: 'number'
-  },
-  {
-    key:'work', emoji:'💼', title:'工作学习', sub:'职业与办公',
-    color:'#eef4ff', accent:'#2c3e50',
-    words:[
-      ['kerja','ker-ja','工作','work'],
-      ['kantor','kan-tor','办公室','work'],
-      ['sekolah','se-ko-lah','学校','work'],
-      ['guru','gu-ru','老师','work'],
-      ['murid','mu-rid','学生','work'],
-      ['dokter','dok-ter','医生','work'],
-      ['polisi','po-li-si','警察','work'],
-      ['belajar','be-la-jar','学习','work'],
-      ['menulis','me-nu-lis','写','work'],
-      ['membaca','mem-ba-ca','读','work'],
-      ['rapat','ra-pat','开会','work'],
-      ['gaji','ga-ji','工资','work'],
-    ],
-    svgKey: 'work'
-  },
-  {
-    key:'nature', emoji:'🌿', title:'自然天气', sub:'天气与环境',
-    color:'#efffef', accent:'#27ae60',
-    words:[
-      ['cuaca','cu-a-ca','天气','nature'],
-      ['hujan','hu-jan','雨','nature'],
-      ['panas','pa-nas','热','nature'],
-      ['dingin','di-ngin','冷','nature'],
-      ['angin','a-ngin','风','nature'],
-      ['matahari','ma-ta-ha-ri','太阳','nature'],
-      ['bulan','bu-lan','月亮','nature'],
-      ['bintang','bin-tang','星星','nature'],
-      ['laut','la-ut','海','nature'],
-      ['gunung','gu-nung','山','nature'],
-      ['pohon','po-hon','树','nature'],
-      ['bunga','bung-a','花','nature'],
-    ],
-    svgKey: 'nature'
-  },
-  {
-    key:'health', emoji:'🏥', title:'健康身体', sub:'生病与就医',
-    color:'#fff0f0', accent:'#e74c3c',
-    words:[
-      ['sakit','sa-kit','生病/疼','health'],
-      ['sehat','se-hat','健康','health'],
-      ['obat','o-bat','药','health'],
-      ['rumah sakit','ru-mah sa-kit','医院','health'],
-      ['demam','de-mam','发烧','health'],
-      ['batuk','ba-tuk','咳嗽','health'],
-      ['pusing','pu-sing','头痛','health'],
-      ['lelah','le-lah','累','health'],
-      ['lapar','la-par','饿','health'],
-      ['haus','ha-us','口渴','health'],
-      ['tidur','ti-dur','睡觉','health'],
-      ['istirahat','is-ti-ra-hat','休息','health'],
-    ],
-    svgKey: 'health'
-  },
-  {
-    key:'feeling', emoji:'😊', title:'情感表达', sub:'心情与感受',
-    color:'#fffaee', accent:'#f1c40f',
-    words:[
-      ['senang','se-nang','高兴','feeling'],
-      ['sedih','se-dih','难过','feeling'],
-      ['marah','ma-rah','生气','feeling'],
-      ['takut','ta-kut','害怕','feeling'],
-      ['suka','su-ka','喜欢','feeling'],
-      ['cinta','cin-ta','爱','feeling'],
-      ['bosan','bo-san','无聊','feeling'],
-      ['capek','ca-pek','累','feeling'],
-      ['baik','ba-ik','好','feeling'],
-      ['bagus','ba-gus','棒/好','feeling'],
-      ['cantik','can-tik','漂亮','feeling'],
-      ['pintar','pin-tar','聪明','feeling'],
-    ],
-    svgKey: 'feeling'
-  }
+const SCENES=[
+{key:'home',emoji:'🏠',title:'家里',sub:'房间与家具',color:'#e8f4fd',accent:'#2980b9',words:[['rumah','ru-mah','家/房子','home'],['kamar','ka-mar','房间','home'],['kamar tidur','ka-mar ti-dur','卧室','home'],['kamar mandi','ka-mar man-di','浴室','home'],['dapur','da-pur','厨房','home'],['ruang tamu','ru-ang ta-mu','客厅','home'],['pintu','pin-tu','门','home'],['jendela','jen-de-la','窗户','home'],['meja','me-ja','桌子','home'],['kursi','kur-si','椅子','home'],['tempat tidur','tem-pat ti-dur','床','home'],['lemari','le-ma-ri','衣柜','home'],['lantai','lan-tai','地板','home']]},
+{key:'food',emoji:'🍽️',title:'吃饭',sub:'食物与餐厅',color:'#fef9ee',accent:'#e67e22',words:[['nasi','na-si','米饭','food'],['mie','mi-e','面条','food'],['ayam','a-yam','鸡肉','food'],['ikan','i-kan','鱼','food'],['sayur','sa-yur','蔬菜','food'],['buah','bu-ah','水果','food'],['minum','mi-num','喝','food'],['makan','ma-kan','吃','food'],['air','a-ir','水','food'],['kopi','ko-pi','咖啡','food'],['teh','te','茶','food'],['enak','e-nak','好吃','food'],['pedas','pe-das','辣','food'],['manis','ma-nis','甜','food']]},
+{key:'body',emoji:'🧍',title:'身体',sub:'人体部位',color:'#fef0ee',accent:'#c0392b',words:[['kepala','ke-pa-la','头','body'],['mata','ma-ta','眼睛','body'],['hidung','hi-dung','鼻子','body'],['mulut','mu-lut','嘴','body'],['telinga','te-li-nga','耳朵','body'],['tangan','ta-ngan','手','body'],['kaki','ka-ki','脚','body'],['perut','pe-rut','肚子','body'],['rambut','ram-but','头发','body'],['gigi','gi-gi','牙齿','body'],['punggung','pung-gung','背','body'],['jari','ja-ri','手指','body']]},
+{key:'market',emoji:'🛒',title:'市场购物',sub:'买东西',color:'#eefaf3',accent:'#27ae60',words:[['pasar','pa-sar','市场','market'],['toko','to-ko','商店','market'],['beli','be-li','买','market'],['jual','ju-al','卖','market'],['harga','har-ga','价格','market'],['mahal','ma-hal','贵','market'],['murah','mu-rah','便宜','market'],['uang','u-ang','钱','market'],['berapa','be-ra-pa','多少','market'],['bayar','ba-yar','付钱','market'],['diskon','dis-kon','折扣','market'],['tas','tas','袋/包','market'],['struk','struk','收据','market']]},
+{key:'family',emoji:'👨‍👩‍👧',title:'家庭',sub:'家人称呼',color:'#fff8ee',accent:'#f39c12',words:[['keluarga','ke-lu-ar-ga','家庭','family'],['ayah','a-yah','父亲','family'],['ibu','i-bu','母亲','family'],['kakak','ka-kak','兄/姐','family'],['adik','a-dik','弟/妹','family'],['anak','a-nak','孩子','family'],['suami','su-a-mi','丈夫','family'],['istri','is-tri','妻子','family'],['kakek','ka-kek','爷爷','family'],['nenek','ne-nek','奶奶','family'],['paman','pa-man','叔叔','family'],['teman','te-man','朋友','family']]},
+{key:'transport',emoji:'🚗',title:'交通出行',sub:'坐车去哪里',color:'#f0f0ff',accent:'#8e44ad',words:[['jalan','ja-lan','路/走','transport'],['mobil','mo-bil','汽车','transport'],['motor','mo-tor','摩托车','transport'],['bus','bus','公共汽车','transport'],['taksi','tak-si','出租车','transport'],['pesawat','pe-sa-wat','飞机','transport'],['kapal','ka-pal','船','transport'],['stasiun','sta-si-un','火车站','transport'],['bandara','ban-da-ra','机场','transport'],['tiket','ti-ket','票','transport'],['jauh','ja-uh','远','transport'],['dekat','de-kat','近','transport'],['kiri','ki-ri','左','transport'],['kanan','ka-nan','右','transport']]},
+{key:'greet',emoji:'👋',title:'打招呼',sub:'问候与日常用语',color:'#f0fff4',accent:'#16a085',words:[['halo','ha-lo','你好','greet'],['selamat pagi','se-la-mat pa-gi','早上好','greet'],['selamat siang','se-la-mat si-ang','中午好','greet'],['selamat malam','se-la-mat ma-lam','晚上好','greet'],['terima kasih','te-ri-ma ka-sih','谢谢','greet'],['sama-sama','sa-ma sa-ma','不客气','greet'],['maaf','ma-af','对不起','greet'],['tolong','to-long','请/帮忙','greet'],['ya','ya','是的','greet'],['tidak','ti-dak','不是/不','greet'],['permisi','per-mi-si','打扰/借过','greet'],['sampai jumpa','sam-pai jum-pa','再见','greet']]},
+{key:'number',emoji:'🔢',title:'数字时间',sub:'数数和说时间',color:'#f8f0ff',accent:'#9b59b6',words:[['satu','sa-tu','一','number'],['dua','du-a','二','number'],['tiga','ti-ga','三','number'],['empat','em-pat','四','number'],['lima','li-ma','五','number'],['enam','e-nam','六','number'],['tujuh','tu-juh','七','number'],['delapan','de-la-pan','八','number'],['sembilan','sem-bi-lan','九','number'],['sepuluh','se-pu-luh','十','number'],['hari','ha-ri','天/日','number'],['minggu','ming-gu','星期/周','number'],['bulan','bu-lan','月','number'],['tahun','ta-hun','年','number']]},
+{key:'work',emoji:'💼',title:'工作学习',sub:'职业与办公',color:'#eef4ff',accent:'#2c3e50',words:[['kerja','ker-ja','工作','work'],['kantor','kan-tor','办公室','work'],['sekolah','se-ko-lah','学校','work'],['guru','gu-ru','老师','work'],['murid','mu-rid','学生','work'],['dokter','dok-ter','医生','work'],['polisi','po-li-si','警察','work'],['belajar','be-la-jar','学习','work'],['menulis','me-nu-lis','写','work'],['membaca','mem-ba-ca','读','work'],['rapat','ra-pat','开会','work'],['gaji','ga-ji','工资','work']]},
+{key:'nature',emoji:'🌿',title:'自然天气',sub:'天气与环境',color:'#efffef',accent:'#27ae60',words:[['cuaca','cu-a-ca','天气','nature'],['hujan','hu-jan','雨','nature'],['panas','pa-nas','热','nature'],['dingin','di-ngin','冷','nature'],['angin','a-ngin','风','nature'],['matahari','ma-ta-ha-ri','太阳','nature'],['bulan','bu-lan','月亮','nature'],['bintang','bin-tang','星星','nature'],['laut','la-ut','海','nature'],['gunung','gu-nung','山','nature'],['pohon','po-hon','树','nature'],['bunga','bung-a','花','nature']]},
+{key:'health',emoji:'🏥',title:'健康身体',sub:'生病与就医',color:'#fff0f0',accent:'#e74c3c',words:[['sakit','sa-kit','生病/疼','health'],['sehat','se-hat','健康','health'],['obat','o-bat','药','health'],['rumah sakit','ru-mah sa-kit','医院','health'],['demam','de-mam','发烧','health'],['batuk','ba-tuk','咳嗽','health'],['pusing','pu-sing','头痛','health'],['lelah','le-lah','累','health'],['lapar','la-par','饿','health'],['haus','ha-us','口渴','health'],['tidur','ti-dur','睡觉','health'],['istirahat','is-ti-ra-hat','休息','health']]},
+{key:'feeling',emoji:'😊',title:'情感表达',sub:'心情与感受',color:'#fffaee',accent:'#f1c40f',words:[['senang','se-nang','高兴','feeling'],['sedih','se-dih','难过','feeling'],['marah','ma-rah','生气','feeling'],['takut','ta-kut','害怕','feeling'],['suka','su-ka','喜欢','feeling'],['cinta','cin-ta','爱','feeling'],['bosan','bo-san','无聊','feeling'],['capek','ca-pek','累','feeling'],['baik','ba-ik','好','feeling'],['bagus','ba-gus','棒/好','feeling'],['cantik','can-tik','漂亮','feeling'],['pintar','pin-tar','聪明','feeling']]}
 ];
 
-// Flatten all words
-const ALL_WORDS = SCENES.flatMap(s => s.words.map(w => [...w]));
-// Deduplicate by Indonesian word
-const WORDS = [];
-const seen = new Set();
-ALL_WORDS.forEach(w => { if(!seen.has(w[0])){seen.add(w[0]);WORDS.push(w);} });
+const WORDS=[];const _s=new Set();
+SCENES.forEach(s=>s.words.forEach(w=>{if(!_s.has(w[0])){_s.add(w[0]);WORDS.push(w);}}));
 
-// Scene SVG illustrations
-function makeSVG(key, words) {
-  const configs = {
-    home: {
-      bg:'#e8f4fd', title:'我的家 (Rumah)',
-      shapes:[
-        {type:'rect',x:20,y:60,w:320,h:200,fill:'#d5e8f5',rx:8,label:''},
-        {type:'rect',x:20,y:60,w:320,h:30,fill:'#2980b9',rx:4,label:''},
-        {type:'rect',x:60,y:110,w:80,h:120,fill:'#fff',rx:4,label:''},
-        {type:'rect',x:220,y:110,w:60,h:60,fill:'#b3d9f5',rx:3,label:''},
-        {type:'rect',x:140,y:180,w:60,h:50,fill:'#8B4513',rx:3,label:''},
-        // furniture
-        {type:'rect',x:30,y:190,w:70,h:40,fill:'#f0c080',rx:4,label:''},
-        {type:'rect',x:255,y:155,w:40,h:10,fill:'#e8d5b0',rx:2,label:''},
-      ],
-      pins:[
-        {x:85,y:95,word:'rumah',label:'rumah 家'},
-        {x:100,y:170,word:'pintu',label:'pintu 门'},
-        {x:250,y:130,word:'jendela',label:'jendela 窗'},
-        {x:55,y:200,word:'kursi',label:'kursi 椅子'},
-        {x:170,y:200,word:'tempat tidur',label:'tempat tidur 床'},
-        {x:275,y:148,word:'meja',label:'meja 桌子'},
-        {x:200,y:95,word:'lantai',label:'lantai 地板'},
-      ]
-    },
-    food: {
-      bg:'#fef9ee', title:'吃饭啦 (Makan)',
-      shapes:[
-        {type:'rect',x:20,y:40,w:320,h:220,fill:'#fffcf5',rx:8},
-        {type:'ellipse',cx:100,cy:160,rx:55,ry:40,fill:'#e8d5a0'},
-        {type:'ellipse',cx:100,cy:160,rx:45,ry:32,fill:'#f5e6b0'},
-        {type:'circle',cx:100,cy:155,r:28,fill:'#f0d080'},
-        {type:'rect',x:170,y:120,w:50,h:70,fill:'#c8e6c9',rx:4},
-        {type:'ellipse',cx:280,cy:160,rx:30,ry:20,fill:'#b3d9f5'},
-        {type:'rect',x:40,y:200,w:280,h:3,fill:'#ddd'},
-        {type:'rect',x:30,y:60,w:100,h:60,fill:'#fff',rx:8},
-        {type:'text',x:80,y:98,text:'☕',size:30},
-        {type:'rect',x:200,y:60,w:120,h:50,fill:'#fff5e6',rx:8},
-      ],
-      pins:[
-        {x:100,y:140,word:'nasi',label:'nasi 米饭'},
-        {x:195,y:130,word:'sayur',label:'sayur 蔬菜'},
-        {x:280,y:145,word:'air',label:'air 水'},
-        {x:80,y:75,word:'kopi',label:'kopi 咖啡'},
-        {x:260,y:70,word:'makan',label:'makan 吃'},
-        {x:155,y:170,word:'enak',label:'enak 好吃'},
-        {x:195,y:200,word:'pedas',label:'pedas 辣'},
-      ]
-    },
-    body: {
-      bg:'#fef0ee', title:'身体部位 (Tubuh)',
-      shapes:[
-        {type:'circle',cx:180,cy:70,r:38,fill:'#fcd5c0'},
-        {type:'rect',x:155,y:108,w:50,h:90,fill:'#fcd5c0',rx:8},
-        {type:'rect',x:118,y:115,w:35,h:70,fill:'#fcd5c0',rx:6},
-        {type:'rect',x:207,y:115,w:35,h:70,fill:'#fcd5c0',rx:6},
-        {type:'rect',x:155,y:198,w:22,h:70,fill:'#fcd5c0',rx:5},
-        {type:'rect',x:183,y:198,w:22,h:70,fill:'#fcd5c0',rx:5},
-        {type:'circle',cx:168,cy:65,r:5,fill:'#555'},
-        {type:'circle',cx:192,cy:65,r:5,fill:'#555'},
-        {type:'ellipse',cx:180,cy:80,rx:8,ry:4,fill:'#e8a090'},
-      ],
-      pins:[
-        {x:180,y:38,word:'kepala',label:'kepala 头'},
-        {x:218,y:60,word:'mata',label:'mata 眼睛'},
-        {x:218,y:78,word:'hidung',label:'hidung 鼻子'},
-        {x:218,y:95,word:'mulut',label:'mulut 嘴'},
-        {x:100,y:95,word:'telinga',label:'telinga 耳朵'},
-        {x:100,y:148,word:'tangan',label:'tangan 手'},
-        {x:180,y:240,word:'kaki',label:'kaki 脚'},
-        {x:248,y:148,word:'perut',label:'perut 肚子'},
-      ]
-    },
-    market: {
-      bg:'#eefaf3', title:'去市场 (Ke Pasar)',
-      shapes:[
-        {type:'rect',x:10,y:40,w:340,h:30,fill:'#27ae60',rx:0},
-        {type:'rect',x:10,y:70,w:340,h:190,fill:'#f8fff8',rx:4},
-        {type:'rect',x:20,y:80,w:80,h:90,fill:'#fff',rx:6},
-        {type:'rect',x:110,y:80,w:80,h:90,fill:'#fff',rx:6},
-        {type:'rect',x:200,y:80,w:80,h:90,fill:'#fff',rx:6},
-        {type:'rect',x:290,y:80,w:50,h:90,fill:'#fff',rx:6},
-        {type:'text',x:35,y:130,text:'🍎🍊',size:20},
-        {type:'text',x:120,y:130,text:'🥦🥕',size:20},
-        {type:'text',x:210,y:130,text:'🐟🍗',size:20},
-        {type:'text',x:298,y:130,text:'🛒',size:28},
-        {type:'rect',x:20,y:185,w:320,h:2,fill:'#c8e6c9'},
-        {type:'rect',x:130,y:195,w:100,h:50,fill:'#fff9e6',rx:8},
-      ],
-      pins:[
-        {x:60,y:65,word:'pasar',label:'pasar 市场'},
-        {x:60,y:140,word:'buah',label:'buah 水果'},
-        {x:150,y:140,word:'sayur',label:'sayur 蔬菜'},
-        {x:310,y:118,word:'beli',label:'beli 买'},
-        {x:180,y:220,word:'harga',label:'harga 价格'},
-        {x:240,y:140,word:'ikan',label:'ikan 鱼'},
-        {x:265,y:65,word:'murah',label:'murah 便宜'},
-      ]
-    },
-    family: {
-      bg:'#fff8ee', title:'我的家人 (Keluarga)',
-      shapes:[
-        {type:'circle',cx:180,cy:70,r:25,fill:'#fcd5a0'},
-        {type:'rect',x:162,y:95,w:36,h:55,fill:'#e8a020',rx:5},
-        {type:'circle',cx:100,cy:100,r:20,fill:'#fcd5a0'},
-        {type:'rect',x:85,y:120,w:30,h:45,fill:'#c0392b',rx:5},
-        {type:'circle',cx:260,cy:100,r:20,fill:'#fcd5a0'},
-        {type:'rect',x:245,y:120,w:30,h:45,fill:'#2980b9',rx:5},
-        {type:'circle',cx:130,cy:160,r:15,fill:'#fcd5a0'},
-        {type:'rect',x:118,y:175,w:24,h:40,fill:'#27ae60',rx:4},
-        {type:'circle',cx:230,cy:160,r:15,fill:'#fcd5a0'},
-        {type:'rect',x:218,y:175,w:24,h:40,fill:'#9b59b6',rx:4},
-        {type:'rect',x:20,y:230,w:320,h:3,fill:'#e8d0a0'},
-      ],
-      pins:[
-        {x:180,y:40,word:'ayah',label:'ayah 爸爸'},
-        {x:68,y:92,word:'ibu',label:'ibu 妈妈'},
-        {x:280,y:92,word:'kakak',label:'kakak 兄/姐'},
-        {x:108,y:152,word:'adik',label:'adik 弟/妹'},
-        {x:258,y:152,word:'anak',label:'anak 孩子'},
-        {x:60,y:200,word:'keluarga',label:'keluarga 家庭'},
-        {x:295,y:200,word:'teman',label:'teman 朋友'},
-      ]
-    },
-    transport: {
-      bg:'#f0f0ff', title:'出行 (Transportasi)',
-      shapes:[
-        {type:'rect',x:0,y:190,w:360,h:70,fill:'#888',rx:0},
-        {type:'rect',x:0,y:195,w:360,h:4,fill:'#fff'},
-        {type:'rect',x:0,y:250,w:360,h:4,fill:'#fff'},
-        {type:'rect',x:30,y:130,w:100,h:60,fill:'#e74c3c',rx:8},
-        {type:'rect',x:15,y:155,w:20,h:30,fill:'#c0392b'},
-        {type:'rect',x:115,y:155,w:20,h:30,fill:'#c0392b'},
-        {type:'circle',cx:40,cy:190,r:12,fill:'#333'},
-        {type:'circle',cx:110,cy:190,r:12,fill:'#333'},
-        {type:'rect',x:180,y:100,w:140,h:90,fill:'#3498db',rx:6},
-        {type:'rect',x:165,y:130,w:20,h:55,fill:'#2980b9'},
-        {type:'rect',x:320,y:130,w:20,h:55,fill:'#2980b9'},
-        {type:'circle',cx:200,cy:192,r:12,fill:'#333'},
-        {type:'circle',cx:240,cy:192,r:12,fill:'#333'},
-        {type:'circle',cx:280,cy:192,r:12,fill:'#333'},
-        {type:'circle',cx:310,cy:192,r:12,fill:'#333'},
-      ],
-      pins:[
-        {x:80,y:125,word:'mobil',label:'mobil 汽车'},
-        {x:250,y:95,word:'bus',label:'bus 公交车'},
-        {x:50,y:210,word:'jalan',label:'jalan 路'},
-        {x:200,y:220,word:'tiket',label:'tiket 票'},
-        {x:290,y:155,word:'jauh',label:'jauh 远'},
-        {x:295,y:220,word:'kanan',label:'kanan 右'},
-        {x:30,y:155,word:'kiri',label:'kiri 左'},
-      ]
-    },
-    greet: {
-      bg:'#f0fff4', title:'打招呼 (Salam)',
-      shapes:[
-        {type:'circle',cx:100,cy:100,r:40,fill:'#fcd5a0'},
-        {type:'circle',cx:260,cy:100,r:40,fill:'#a0d0fc'},
-        {type:'rect',x:75,y:140,w:50,h:70,fill:'#e8a020',rx:8},
-        {type:'rect',x:235,y:140,w:50,h:70,fill:'#2980b9',rx:8},
-        {type:'path',d:'M140,100 Q180,70 220,100',stroke:'#27ae60',sw:3,fill:'none'},
-        {type:'rect',x:110,y:200,w:140,h:40,fill:'#e8fff0',rx:10},
-        {type:'text',x:120,y:98,text:'😊',size:28},
-        {type:'text',x:245,y:98,text:'😊',size:28},
-        {type:'text',x:148,y:224,text:'Halo! 👋',size:14,fill:'#27ae60'},
-      ],
-      pins:[
-        {x:100,y:55,word:'halo',label:'halo 你好'},
-        {x:260,y:55,word:'terima kasih',label:'terima kasih 谢谢'},
-        {x:55,y:165,word:'selamat pagi',label:'selamat pagi 早上好'},
-        {x:290,y:165,word:'maaf',label:'maaf 对不起'},
-        {x:85,y:225,word:'ya',label:'ya 是的'},
-        {x:280,y:225,word:'tidak',label:'tidak 不'},
-        {x:180,y:165,word:'sampai jumpa',label:'sampai jumpa 再见'},
-      ]
-    },
-    number: {
-      bg:'#f8f0ff', title:'数字 (Angka)',
-      shapes:[
-        {type:'rect',x:20,y:40,w:60,h:60,fill:'#e8d5fc',rx:8},{type:'text',x:50,y:78,text:'1',size:32,fill:'#9b59b6'},
-        {type:'rect',x:90,y:40,w:60,h:60,fill:'#d5e8fc',rx:8},{type:'text',x:120,y:78,text:'2',size:32,fill:'#2980b9'},
-        {type:'rect',x:160,y:40,w:60,h:60,fill:'#d5fce8',rx:8},{type:'text',x:190,y:78,text:'3',size:32,fill:'#27ae60'},
-        {type:'rect',x:230,y:40,w:60,h:60,fill:'#fce8d5',rx:8},{type:'text',x:260,y:78,text:'4',size:32,fill:'#e67e22'},
-        {type:'rect',x:20,y:120,w:60,h:60,fill:'#fcd5d5',rx:8},{type:'text',x:50,y:158,text:'5',size:32,fill:'#c0392b'},
-        {type:'rect',x:90,y:120,w:60,h:60,fill:'#e8fcd5',rx:8},{type:'text',x:120,y:158,text:'6',size:32,fill:'#16a085'},
-        {type:'rect',x:160,y:120,w:60,h:60,fill:'#fce8fc',rx:8},{type:'text',x:190,y:158,text:'7',size:32,fill:'#8e44ad'},
-        {type:'rect',x:230,y:120,w:60,h:60,fill:'#fcf8d5',rx:8},{type:'text',x:260,y:158,text:'8',size:32,fill:'#d4ac0d'},
-        {type:'rect',x:20,y:200,w:60,h:60,fill:'#d5f0fc',rx:8},{type:'text',x:50,y:238,text:'9',size:32,fill:'#1abc9c'},
-        {type:'rect',x:90,y:200,w:130,h:60,fill:'#f5d5e8',rx:8},{type:'text',x:155,y:238,text:'10',size:32,fill:'#c0392b'},
-        {type:'rect',x:230,y:200,w:90,h:60,fill:'#e8e8e8',rx:8},
-      ],
-      pins:[
-        {x:50,y:50,word:'satu',label:'satu 一'},
-        {x:120,y:50,word:'dua',label:'dua 二'},
-        {x:190,y:50,word:'tiga',label:'tiga 三'},
-        {x:260,y:50,word:'empat',label:'empat 四'},
-        {x:50,y:130,word:'lima',label:'lima 五'},
-        {x:120,y:130,word:'enam',label:'enam 六'},
-        {x:190,y:130,word:'tujuh',label:'tujuh 七'},
-        {x:260,y:130,word:'delapan',label:'delapan 八'},
-        {x:50,y:210,word:'sembilan',label:'sembilan 九'},
-        {x:155,y:210,word:'sepuluh',label:'sepuluh 十'},
-        {x:275,y:210,word:'tahun',label:'tahun 年'},
-      ]
-    },
-    work: {
-      bg:'#eef4ff', title:'工作学习 (Kerja & Belajar)',
-      shapes:[
-        {type:'rect',x:20,y:40,w:320,h:200,fill:'#f5f8ff',rx:8},
-        {type:'rect',x:30,y:50,w:200,h:120,fill:'#fff',rx:6},
-        {type:'rect',x:40,y:60,w:180,h:100,fill:'#e8f0fe',rx:4},
-        {type:'text',x:80,y:115,text:'📊 📈 📋',size:20},
-        {type:'rect',x:240,y:50,w:90,h:50,fill:'#fff9e6',rx:6},
-        {type:'text',x:258,y:82,text:'📚',size:28},
-        {type:'rect',x:240,y:110,w:90,h:60,fill:'#fff0f0',rx:6},
-        {type:'text',x:260,y:145,text:'✏️📝',size:22},
-        {type:'rect',x:30,y:185,w:295,h:50,fill:'#fff',rx:6},
-        {type:'text',x:90,y:215,text:'👨‍💼  👩‍💼  👨‍🏫  👩‍⚕️',size:20},
-      ],
-      pins:[
-        {x:130,y:70,word:'kerja',label:'kerja 工作'},
-        {x:50,y:175,word:'kantor',label:'kantor 办公室'},
-        {x:285,y:60,word:'sekolah',label:'sekolah 学校'},
-        {x:285,y:120,word:'belajar',label:'belajar 学习'},
-        {x:90,y:200,word:'guru',label:'guru 老师'},
-        {x:185,y:200,word:'murid',label:'murid 学生'},
-        {x:260,y:200,word:'dokter',label:'dokter 医生'},
-      ]
-    },
-    nature: {
-      bg:'#efffef', title:'大自然 (Alam)',
-      shapes:[
-        {type:'rect',x:0,y:160,w:360,h:100,fill:'#4a7c59',rx:0},
-        {type:'rect',x:0,y:0,w:360,h:170,fill:'#87ceeb',rx:0},
-        {type:'circle',cx:60,cy:55,r:35,fill:'#FFD700'},
-        {type:'circle',cx:250,cy:40,r:25,fill:'#fff'},
-        {type:'circle',cx:280,cy:35,r:20,fill:'#fff'},
-        {type:'circle',cx:265,cy:28,r:18,fill:'#fff'},
-        {type:'rect',x:150,y:80,w:15,h:80,fill:'#5D4037'},
-        {type:'ellipse',cx:157,cy:70,rx:35,ry:28,fill:'#2e7d32'},
-        {type:'rect',x:220,y:100,w:12,h:60,fill:'#5D4037'},
-        {type:'ellipse',cx:226,cy:92,rx:28,ry:22,fill:'#388e3c'},
-        {type:'rect',x:0,y:185,w:360,h:10,fill:'#1565C0'},
-        {type:'text',x:20,y:230,text:'🌺 🌻 🌸',size:24},
-        {type:'ellipse',cx:290,cy:130,rx:50,ry:35,fill:'#546e7a'},
-        {type:'ellipse',cx:310,cy:110,rx:35,ry:28,fill:'#607d8b'},
-      ],
-      pins:[
-        {x:60,y:20,word:'matahari',label:'matahari 太阳'},
-        {x:265,y:20,word:'angin',label:'angin 风'},
-        {x:157,y:55,word:'pohon',label:'pohon 树'},
-        {x:75,y:195,word:'bunga',label:'bunga 花'},
-        {x:180,y:200,word:'laut',label:'laut 海'},
-        {x:300,y:100,word:'gunung',label:'gunung 山'},
-        {x:60,y:160,word:'hujan',label:'hujan 雨'},
-      ]
-    },
-    health: {
-      bg:'#fff0f0', title:'健康 (Kesehatan)',
-      shapes:[
-        {type:'rect',x:20,y:40,w:320,h:220,fill:'#fff',rx:12},
-        {type:'rect',x:155,y:30,w:50,h:25,fill:'#e74c3c',rx:4},
-        {type:'rect',x:172,y:15,w:16,h:55,fill:'#e74c3c',rx:3},
-        {type:'circle',cx:100,cy:130,r:45,fill:'#fcd5a0'},
-        {type:'rect',x:77,y:175,w:46,h:65,fill:'#3498db',rx:6},
-        {type:'rect',x:180,y:80,w:130,h:30,fill:'#fef3f3',rx:5},
-        {type:'text',x:193,y:102,text:'🌡️ 体温 38°C',size:12,fill:'#e74c3c'},
-        {type:'rect',x:180,y:120,w:130,h:30,fill:'#f0fff4',rx:5},
-        {type:'text',x:195,y:140,text:'💊 obat 药',size:12,fill:'#27ae60'},
-        {type:'rect',x:180,y:160,w:130,h:30,fill:'#fff8e1',rx:5},
-        {type:'text',x:200,y:180,text:'🛏️ istirahat',size:12,fill:'#f39c12'},
-        {type:'rect',x:180,y:200,w:130,h:30,fill:'#f3e5f5',rx:5},
-        {type:'text',x:193,y:220,text:'😴 tidur 睡觉',size:12,fill:'#9b59b6'},
-      ],
-      pins:[
-        {x:100,y:88,word:'sakit',label:'sakit 生病'},
-        {x:100,y:175,word:'dokter',label:'dokter 医生'},
-        {x:20,y:52,word:'rumah sakit',label:'rumah sakit 医院'},
-        {x:300,y:85,word:'demam',label:'demam 发烧'},
-        {x:300,y:125,word:'obat',label:'obat 药'},
-        {x:300,y:165,word:'istirahat',label:'istirahat 休息'},
-        {x:300,y:205,word:'tidur',label:'tidur 睡觉'},
-      ]
-    },
-    feeling: {
-      bg:'#fffaee', title:'情绪感受 (Perasaan)',
-      shapes:[
-        {type:'circle',cx:80,cy:80,r:40,fill:'#FFD700'},{type:'text',x:65,y:88,text:'😊',size:32},
-        {type:'circle',cx:180,cy:80,r:40,fill:'#87ceeb'},{type:'text',x:165,y:88,text:'😢',size:32},
-        {type:'circle',cx:280,cy:80,r:40,fill:'#ff8c69'},{type:'text',x:265,y:88,text:'😡',size:32},
-        {type:'circle',cx:80,cy:185,r:40,fill:'#dda0dd'},{type:'text',x:65,y:193,text:'😱',size:32},
-        {type:'circle',cx:180,cy:185,r:40,fill:'#98fb98'},{type:'text',x:165,y:193,text:'😍',size:32},
-        {type:'circle',cx:280,cy:185,r:40,fill:'#f0e68c'},{type:'text',x:265,y:193,text:'😴',size:32},
-        {type:'text',x:58,y:135,text:'senang',size:10,fill:'#b8860b'},
-        {type:'text',x:160,y:135,text:'sedih',size:10,fill:'#4682b4'},
-        {type:'text',x:262,y:135,text:'marah',size:10,fill:'#8b2500'},
-        {type:'text',x:62,y:240,text:'takut',size:10,fill:'#6a0dad'},
-        {type:'text',x:168,y:240,text:'cinta',size:10,fill:'#006400'},
-        {type:'text',x:268,y:240,text:'bosan',size:10,fill:'#8b6914'},
-      ],
-      pins:[
-        {x:80,y:42,word:'senang',label:'senang 高兴'},
-        {x:180,y:42,word:'sedih',label:'sedih 难过'},
-        {x:280,y:42,word:'marah',label:'marah 生气'},
-        {x:80,y:148,word:'takut',label:'takut 害怕'},
-        {x:180,y:148,word:'cinta',label:'cinta 爱'},
-        {x:280,y:148,word:'bosan',label:'bosan 无聊'},
-        {x:180,y:265,word:'baik',label:'baik 好'},
-      ]
-    }
+const SENTS=[
+['Halo! Apa kabar?','ha-lo a-pa ka-bar','你好！你怎么样？','greet'],
+['Kabar baik, terima kasih!','ka-bar ba-ik te-ri-ma ka-sih','我很好，谢谢！','greet'],
+['Selamat pagi! Sudah sarapan?','se-la-mat pa-gi su-dah sa-ra-pan','早上好！吃过早饭了吗？','greet'],
+['Selamat siang! Mau ke mana?','se-la-mat si-ang mau ke ma-na','中午好！要去哪里？','greet'],
+['Selamat malam! Sudah makan?','se-la-mat ma-lam su-dah ma-kan','晚上好！吃饭了吗？','greet'],
+['Senang bertemu dengan Anda.','se-nang ber-te-mu de-ngan an-da','很高兴见到你。','greet'],
+['Nama saya Li Ming.','na-ma sa-ya li ming','我叫李明。','greet'],
+['Siapa nama Anda?','si-a-pa na-ma an-da','你叫什么名字？','greet'],
+['Saya dari Tiongkok.','sa-ya da-ri ti-ong-kok','我来自中国。','greet'],
+['Maaf, saya tidak mengerti.','ma-af sa-ya ti-dak me-nger-ti','对不起，我不明白。','greet'],
+['Tolong bicara lebih pelan.','to-long bi-ca-ra le-bih pe-lan','请说慢一点。','greet'],
+['Bisa tolong bantu saya?','bi-sa to-long ban-tu sa-ya','能帮帮我吗？','greet'],
+['Sampai jumpa besok!','sam-pai jum-pa be-sok','明天见！','greet'],
+['Terima kasih banyak!','te-ri-ma ka-sih ba-nyak','非常感谢！','greet'],
+['Sama-sama, tidak apa-apa.','sa-ma sa-ma ti-dak a-pa a-pa','不客气，没关系。','greet'],
+['Saya mau pesan nasi goreng.','sa-ya mau pe-san na-si go-reng','我要点炒饭。','food'],
+['Apakah makanan ini pedas?','a-pa-kah ma-ka-nan i-ni pe-das','这道菜辣吗？','food'],
+['Enak sekali! Saya suka.','e-nak se-ka-li sa-ya su-ka','太好吃了！我喜欢。','food'],
+['Berapa harga nasi ayam ini?','be-ra-pa har-ga na-si a-yam','这份鸡肉饭多少钱？','food'],
+['Minta air putih satu gelas.','min-ta a-ir pu-tih sa-tu ge-las','请给我一杯白开水。','food'],
+['Minta bon-nya sekarang.','min-ta bon-nya se-ka-rang','请现在结账。','food'],
+['Jangan pakai cabai ya.','ja-ngan pa-kai ca-bai ya','不要放辣椒。','food'],
+['Mie goreng di sini enak.','mi-e go-reng di si-ni e-nak','这里的炒面很好吃。','food'],
+['Saya mau kopi satu cangkir.','sa-ya mau ko-pi sa-tu cang-kir','我要一杯咖啡。','food'],
+['Ada sayur apa hari ini?','a-da sa-yur a-pa ha-ri i-ni','今天有什么蔬菜？','food'],
+['Saya tidak makan daging.','sa-ya ti-dak ma-kan da-ging','我不吃肉。','food'],
+['Buahnya manis sekali.','bu-ah-nya ma-nis se-ka-li','这水果很甜。','food'],
+['Teh atau kopi?','teh a-tau ko-pi','茶还是咖啡？','food'],
+['Saya lapar, mau makan.','sa-ya la-par mau ma-kan','我饿了，想吃东西。','food'],
+['Makan malam bersama yuk!','ma-kan ma-lam ber-sa-ma yuk','一起吃晚饭吧！','food'],
+['Rumah saya tidak jauh dari sini.','ru-mah sa-ya ti-dak ja-uh da-ri si-ni','我家离这里不远。','home'],
+['Kamar tidur saya ada di lantai dua.','ka-mar ti-dur sa-ya a-da di lan-tai du-a','我的卧室在二楼。','home'],
+['Kamar mandinya di mana?','ka-mar man-di-nya di ma-na','浴室在哪里？','home'],
+['Dapur saya kecil tapi lengkap.','da-pur sa-ya ke-cil ta-pi leng-kap','我的厨房小但齐全。','home'],
+['Silakan duduk di kursi ini.','si-la-kan du-duk di kur-si i-ni','请坐在这把椅子上。','home'],
+['Jendelanya besar dan terang.','jen-de-la-nya be-sar dan te-rang','窗户又大又亮。','home'],
+['Pintunya terkunci.','pin-tu-nya ter-kun-ci','门锁了。','home'],
+['Lantainya bersih sekali.','lan-tai-nya ber-sih se-ka-li','地板很干净。','home'],
+['Ruang tamu kami luas.','ru-ang ta-mu ka-mi lu-as','我们的客厅很宽敞。','home'],
+['Tempat tidurnya sangat nyaman.','tem-pat ti-dur-nya sa-ngat nya-man','床非常舒适。','home'],
+['Berapa harga barang ini?','be-ra-pa har-ga ba-rang i-ni','这件商品多少钱？','market'],
+['Ini terlalu mahal.','i-ni ter-la-lu ma-hal','这个太贵了。','market'],
+['Ada diskon tidak?','a-da dis-kon ti-dak','有折扣吗？','market'],
+['Bisa lebih murah?','bi-sa le-bih mu-rah','能便宜一点吗？','market'],
+['Saya beli dua ya.','sa-ya be-li du-a ya','我买两个。','market'],
+['Bisa bayar dengan kartu?','bi-sa ba-yar de-ngan kar-tu','可以刷卡吗？','market'],
+['Minta kantong plastiknya.','min-ta kan-tong plas-tik-nya','请给我袋子。','market'],
+['Tolong berikan struk-nya.','to-long be-ri-kan struk-nya','请给我收据。','market'],
+['Pasar ini sangat ramai.','pa-sar i-ni sa-ngat ra-mai','这个市场很热闹。','market'],
+['Saya hanya melihat-lihat.','sa-ya ha-nya me-li-hat li-hat','我只是随便看看。','market'],
+['Di mana stasiun busnya?','di ma-na sta-si-un bus-nya','公交站在哪里？','transport'],
+['Bus nomor berapa ke pusat kota?','bus no-mor be-ra-pa ke pu-sat ko-ta','几路车去市中心？','transport'],
+['Berapa ongkos taksi ke bandara?','be-ra-pa ong-kos tak-si ke ban-da-ra','出租车去机场多少钱？','transport'],
+['Jalan lurus lalu belok kiri.','ja-lan lu-rus la-lu be-lok ki-ri','直走然后左转。','transport'],
+['Belok kanan di perempatan.','be-lok ka-nan di pe-rem-pa-tan','在十字路口右转。','transport'],
+['Apakah ini jauh dari sini?','a-pa-kah i-ni ja-uh da-ri si-ni','这离这里远吗？','transport'],
+['Dekat, sekitar 5 menit jalan kaki.','de-kat se-ki-tar 5 me-nit ja-lan ka-ki','很近，走路约5分钟。','transport'],
+['Pesawat saya terlambat.','pe-sa-wat sa-ya ter-lam-bat','我的飞机晚点了。','transport'],
+['Ada ojek online di sini?','a-da o-jek on-line di si-ni','这里有网约摩托车吗？','transport'],
+['Kapan kapal berangkat?','ka-pan ka-pal be-rang-kat','船什么时候出发？','transport'],
+['Keluarga saya tinggal di Jakarta.','ke-lu-ar-ga sa-ya ting-gal di ja-kar-ta','我家住在雅加达。','family'],
+['Ayah saya bekerja di kantor.','a-yah sa-ya be-ker-ja di kan-tor','我父亲在办公室工作。','family'],
+['Ibu saya adalah guru.','i-bu sa-ya a-da-lah gu-ru','我妈妈是老师。','family'],
+['Saya punya satu kakak dan satu adik.','sa-ya pu-nya sa-tu ka-kak dan sa-tu a-dik','我有一个哥哥和一个弟弟。','family'],
+['Anak saya berumur lima tahun.','a-nak sa-ya ber-u-mur li-ma ta-hun','我孩子五岁了。','family'],
+['Kami adalah keluarga yang bahagia.','ka-mi a-da-lah ke-lu-ar-ga yang ba-ha-gi-a','我们是幸福的家庭。','family'],
+['Teman baik saya bernama Budi.','te-man ba-ik sa-ya ber-na-ma bu-di','我的好朋友叫布迪。','family'],
+['Paman saya datang dari Surabaya.','pa-man sa-ya da-tang da-ri su-ra-ba-ya','我叔叔从泗水来。','family'],
+['Nenek saya masak enak sekali.','ne-nek sa-ya ma-sak e-nak se-ka-li','我奶奶做的菜很好吃。','family'],
+['Suami saya sangat pengertian.','su-a-mi sa-ya sa-ngat peng-er-ti-an','我丈夫很体贴。','family'],
+['Saya merasa tidak enak badan.','sa-ya me-ra-sa ti-dak e-nak ba-dan','我感觉身体不舒服。','health'],
+['Saya ingin periksa ke dokter.','sa-ya i-ngin pe-rik-sa ke dok-ter','我想去看医生。','health'],
+['Saya demam sejak kemarin.','sa-ya de-mam se-jak ke-ma-rin','我从昨天开始发烧。','health'],
+['Di mana rumah sakitnya?','di ma-na ru-mah sa-kit-nya','医院在哪里？','health'],
+['Apakah ada obat untuk flu?','a-pa-kah a-da o-bat un-tuk flu','有感冒药吗？','health'],
+['Dokter bilang harus istirahat.','dok-ter bi-lang ha-rus is-ti-ra-hat','医生说必须休息。','health'],
+['Saya batuk sudah tiga hari.','sa-ya ba-tuk su-dah ti-ga ha-ri','我咳嗽三天了。','health'],
+['Minum air putih yang banyak.','mi-num a-ir pu-tih yang ba-nyak','多喝白开水。','health'],
+['Kepala saya pusing sekali.','ke-pa-la sa-ya pu-sing se-ka-li','我头很晕。','health'],
+['Semoga cepat sembuh ya!','se-mo-ga ce-pat sem-buh ya','祝你早日康复！','health'],
+['Hari ini hari Senin.','ha-ri i-ni ha-ri se-nin','今天是星期一。','number'],
+['Besok saya ada rapat.','be-sok sa-ya a-da ra-pat','明天我有会议。','number'],
+['Kemarin hari ulang tahun saya.','ke-ma-rin ha-ri u-lang ta-hun sa-ya','昨天是我的生日。','number'],
+['Sekarang jam tiga sore.','se-ka-rang jam ti-ga so-re','现在是下午三点。','number'],
+['Penerbangan berangkat jam sepuluh.','pe-ner-bang-an be-rang-kat jam se-pu-luh','航班十点出发。','number'],
+['Saya sudah di sini lima hari.','sa-ya su-dah di si-ni li-ma ha-ri','我已经在这里五天了。','number'],
+['Kita punya waktu dua jam.','ki-ta pu-nya wak-tu du-a jam','我们有两个小时。','number'],
+['Bulan depan saya ke Bali.','bu-lan de-pan sa-ya ke ba-li','下个月我去巴厘岛。','number'],
+['Harganya seratus ribu rupiah.','har-ga-nya se-ra-tus ri-bu ru-pi-ah','价格是十万印尼盾。','number'],
+['Restoran buka jam dua belas.','res-to-ran bu-ka jam du-a be-las','餐厅十二点开门。','number'],
+['Hari ini cuacanya sangat panas.','ha-ri i-ni cu-a-ca-nya sa-ngat pa-nas','今天天气非常热。','nature'],
+['Apakah akan hujan hari ini?','a-pa-kah a-kan hu-jan ha-ri i-ni','今天会下雨吗？','nature'],
+['Anginnya segar sekali.','a-ngin-nya se-gar se-ka-li','风很清爽。','nature'],
+['Mataharinya terik sekali.','ma-ta-ha-ri-nya te-rik se-ka-li','太阳很猛烈。','nature'],
+['Lautnya biru dan indah.','la-ut-nya bi-ru dan in-dah','大海又蓝又美。','nature'],
+['Gunungnya sangat tinggi.','gu-nung-nya sa-ngat ting-gi','山很高。','nature'],
+['Bunganya harum sekali.','bung-a-nya ha-rum se-ka-li','花很香。','nature'],
+['Pohon ini sangat tua.','po-hon i-ni sa-ngat tu-a','这棵树很老。','nature'],
+['Bintang-bintang sangat terang malam ini.','bin-tang bin-tang sa-ngat te-rang ma-lam i-ni','今晚星星很亮。','nature'],
+['Indonesia punya banyak pulau indah.','in-do-ne-si-a pu-nya ba-nyak pu-lau in-dah','印尼有很多美丽的岛屿。','nature'],
+['Saya sangat senang hari ini!','sa-ya sa-ngat se-nang ha-ri i-ni','我今天非常高兴！','feeling'],
+['Saya sedih karena rindu rumah.','sa-ya se-dih ka-re-na rin-du ru-mah','我难过因为想家。','feeling'],
+['Jangan marah ya!','ja-ngan ma-rah ya','别生气！','feeling'],
+['Saya takut naik pesawat.','sa-ya ta-kut na-ik pe-sa-wat','我怕坐飞机。','feeling'],
+['Saya suka masakan Indonesia.','sa-ya su-ka ma-sa-kan in-do-ne-si-a','我喜欢印尼菜。','feeling'],
+['Saya cinta kamu.','sa-ya cin-ta ka-mu','我爱你。','feeling'],
+['Kamu pintar sekali!','ka-mu pin-tar se-ka-li','你真聪明！','feeling'],
+['Cantik sekali bajunya!','can-tik se-ka-li ba-ju-nya','衣服真漂亮！','feeling'],
+['Saya bosan di rumah terus.','sa-ya bo-san di ru-mah te-rus','我一直待在家里很无聊。','feeling'],
+['Saya capek tapi bahagia.','sa-ya ca-pek ta-pi ba-ha-gi-a','我累但是很开心。','feeling'],
+['Saya bekerja di perusahaan teknologi.','sa-ya be-ker-ja di pe-ru-sa-ha-an tek-no-lo-gi','我在一家科技公司工作。','work'],
+['Saya sedang belajar bahasa Indonesia.','sa-ya se-dang be-la-jar ba-ha-sa in-do-ne-si-a','我正在学印尼语。','work'],
+['Bahasa Indonesia tidak terlalu sulit.','ba-ha-sa in-do-ne-si-a ti-dak ter-la-lu su-lit','印尼语不太难。','work'],
+['Guru saya sangat sabar.','gu-ru sa-ya sa-ngat sa-bar','我的老师很有耐心。','work'],
+['Rapat dimulai jam sembilan pagi.','ra-pat di-mu-lai jam sem-bi-lan pa-gi','会议早上九点开始。','work'],
+['Gaji saya naik bulan ini.','ga-ji sa-ya na-ik bu-lan i-ni','我这个月工资涨了。','work'],
+['Murid-muridnya rajin belajar.','mu-rid mu-rid-nya ra-jin be-la-jar','学生们很勤奋。','work'],
+['Kantor kami ada di lantai tiga.','kan-tor ka-mi a-da di lan-tai ti-ga','我们办公室在三楼。','work'],
+['Bisakah Anda menulis nama Anda?','bi-sa-kah an-da me-nu-lis na-ma an-da','您能写下您的名字吗？','work'],
+['Saya perlu buku bahasa Indonesia.','sa-ya per-lu bu-ku ba-ha-sa in-do-ne-si-a','我需要一本印尼语书。','work'],
+['Kepala saya sakit.','ke-pa-la sa-ya sa-kit','我头痛。','body'],
+['Mata saya lelah karena banyak membaca.','ma-ta sa-ya le-lah ka-re-na ba-nyak mem-ba-ca','我的眼睛因为看太多书而疲惫。','body'],
+['Tangan saya terluka.','ta-ngan sa-ya ter-lu-ka','我的手受伤了。','body'],
+['Kaki saya kesemutan.','ka-ki sa-ya ke-se-mu-tan','我的脚麻了。','body'],
+['Perut saya lapar sekali.','pe-rut sa-ya la-par se-ka-li','我肚子非常饿。','body'],
+['Rambutnya panjang dan indah.','ram-but-nya pan-jang dan in-dah','头发又长又漂亮。','body'],
+['Giginya putih dan bersih.','gi-gi-nya pu-tih dan ber-sih','牙齿又白又干净。','body'],
+['Jari saya terjepit pintu.','ja-ri sa-ya ter-je-pit pin-tu','我的手指被门夹到了。','body'],
+['Punggung saya sakit setelah kerja.','pung-gung sa-ya sa-kit se-te-lah ker-ja','工作后我背痛。','body'],
+['Hidung saya mampet karena flu.','hi-dung sa-ya mam-pet ka-re-na flu','我因为感冒鼻子堵了。','body'],
+];
+
+const STORAGE_KEY='indo_learned_v1';
+function loadLearned(){try{const r=localStorage.getItem(STORAGE_KEY);return r?new Set(JSON.parse(r)):new Set();}catch(e){return new Set();}}
+function saveLearned(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify([...learned]));}catch(e){}}
+const learned=loadLearned();
+let cardIdx=0,cardWords=[...WORDS],quizMode='i2c',quizCur=null,qok=0,qno=0,streak=0;
+
+function markLearned(w){if(learned.has(w))return;learned.add(w);saveLearned();updateStats();}
+function updateStats(){
+  const n=learned.size;
+  document.getElementById('sl').textContent=n;
+  document.getElementById('cl').textContent=n;
+  document.getElementById('pf').style.width=(n/WORDS.length*100).toFixed(1)+'%';
+  document.getElementById('cpf').style.width=(n/WORDS.length*100).toFixed(1)+'%';
+  document.getElementById('qlrn').textContent=n;
+  const done=SCENES.filter(s=>s.words.every(w=>learned.has(w[0]))).length;
+  document.getElementById('ss').textContent=done+'/'+SCENES.length;
+  const area=document.getElementById('unlock-area');
+  if(n>=100)area.innerHTML=`<div class="unlock-banner"><div class="icon">🔓</div><div><h3>基础词汇解锁！</h3><p>已掌握${n}个核心词！</p></div></div>`;
+  else area.innerHTML='';
+  renderSceneGrid();
+}
+
+function makeSVG(key,words){
+  const cfgs={
+    home:{bg:'#e8f4fd',title:'Rumah · 家里',pins:[{x:85,y:95,word:'rumah',lbl:'rumah·家'},{x:100,y:170,word:'pintu',lbl:'pintu·门'},{x:250,y:130,word:'jendela',lbl:'jendela·窗'},{x:55,y:200,word:'kursi',lbl:'kursi·椅子'},{x:170,y:200,word:'tempat tidur',lbl:'tempat tidur·床'},{x:275,y:148,word:'meja',lbl:'meja·桌子'},{x:200,y:95,word:'lantai',lbl:'lantai·地板'}],sh:[{t:'rect',x:20,y:60,w:320,h:200,f:'#d5e8f5',rx:8},{t:'rect',x:20,y:60,w:320,h:30,f:'#2980b9',rx:4},{t:'rect',x:60,y:110,w:80,h:120,f:'#fff',rx:4},{t:'rect',x:220,y:110,w:60,h:60,f:'#b3d9f5',rx:3},{t:'rect',x:140,y:180,w:60,h:50,f:'#8B4513',rx:3},{t:'rect',x:30,y:190,w:70,h:40,f:'#f0c080',rx:4},{t:'rect',x:255,y:155,w:40,h:10,f:'#e8d5b0',rx:2}]},
+    food:{bg:'#fef9ee',title:'Makanan · 吃饭',pins:[{x:100,y:140,word:'nasi',lbl:'nasi·米饭'},{x:195,y:130,word:'sayur',lbl:'sayur·蔬菜'},{x:280,y:145,word:'air',lbl:'air·水'},{x:80,y:75,word:'kopi',lbl:'kopi·咖啡'},{x:260,y:70,word:'makan',lbl:'makan·吃'},{x:155,y:170,word:'enak',lbl:'enak·好吃'},{x:195,y:200,word:'pedas',lbl:'pedas·辣'}],sh:[{t:'rect',x:20,y:40,w:320,h:220,f:'#fffcf5',rx:8},{t:'ellipse',cx:100,cy:160,rx:55,ry:40,f:'#e8d5a0'},{t:'ellipse',cx:100,cy:160,rx:45,ry:32,f:'#f5e6b0'},{t:'circle',cx:100,cy:155,r:28,f:'#f0d080'},{t:'rect',x:170,y:120,w:50,h:70,f:'#c8e6c9',rx:4},{t:'ellipse',cx:280,cy:160,rx:30,ry:20,f:'#b3d9f5'},{t:'rect',x:30,y:60,w:100,h:60,f:'#fff',rx:8},{t:'text',x:80,y:98,txt:'☕',sz:30},{t:'rect',x:200,y:60,w:120,h:50,f:'#fff5e6',rx:8}]},
+    body:{bg:'#fef0ee',title:'Tubuh · 身体',pins:[{x:180,y:38,word:'kepala',lbl:'kepala·头'},{x:218,y:60,word:'mata',lbl:'mata·眼睛'},{x:218,y:78,word:'hidung',lbl:'hidung·鼻子'},{x:218,y:95,word:'mulut',lbl:'mulut·嘴'},{x:100,y:95,word:'telinga',lbl:'telinga·耳朵'},{x:100,y:148,word:'tangan',lbl:'tangan·手'},{x:180,y:240,word:'kaki',lbl:'kaki·脚'},{x:248,y:148,word:'perut',lbl:'perut·肚子'}],sh:[{t:'circle',cx:180,cy:70,r:38,f:'#fcd5c0'},{t:'rect',x:155,y:108,w:50,h:90,f:'#fcd5c0',rx:8},{t:'rect',x:118,y:115,w:35,h:70,f:'#fcd5c0',rx:6},{t:'rect',x:207,y:115,w:35,h:70,f:'#fcd5c0',rx:6},{t:'rect',x:155,y:198,w:22,h:70,f:'#fcd5c0',rx:5},{t:'rect',x:183,y:198,w:22,h:70,f:'#fcd5c0',rx:5},{t:'circle',cx:168,cy:65,r:5,f:'#555'},{t:'circle',cx:192,cy:65,r:5,f:'#555'},{t:'ellipse',cx:180,cy:80,rx:8,ry:4,f:'#e8a090'}]},
+    market:{bg:'#eefaf3',title:'Pasar · 市场',pins:[{x:60,y:65,word:'pasar',lbl:'pasar·市场'},{x:60,y:140,word:'buah',lbl:'buah·水果'},{x:150,y:140,word:'sayur',lbl:'sayur·蔬菜'},{x:310,y:118,word:'beli',lbl:'beli·买'},{x:180,y:220,word:'harga',lbl:'harga·价格'},{x:240,y:140,word:'ikan',lbl:'ikan·鱼'},{x:265,y:65,word:'murah',lbl:'murah·便宜'}],sh:[{t:'rect',x:10,y:40,w:340,h:30,f:'#27ae60',rx:0},{t:'rect',x:10,y:70,w:340,h:190,f:'#f8fff8',rx:4},{t:'rect',x:20,y:80,w:80,h:90,f:'#fff',rx:6},{t:'rect',x:110,y:80,w:80,h:90,f:'#fff',rx:6},{t:'rect',x:200,y:80,w:80,h:90,f:'#fff',rx:6},{t:'rect',x:290,y:80,w:50,h:90,f:'#fff',rx:6},{t:'text',x:35,y:130,txt:'🍎🍊',sz:20},{t:'text',x:120,y:130,txt:'🥦🥕',sz:20},{t:'text',x:210,y:130,txt:'🐟🍗',sz:20},{t:'text',x:298,y:130,txt:'🛒',sz:28},{t:'rect',x:20,y:185,w:320,h:2,f:'#c8e6c9'},{t:'rect',x:130,y:195,w:100,h:50,f:'#fff9e6',rx:8}]},
+    family:{bg:'#fff8ee',title:'Keluarga · 家庭',pins:[{x:180,y:40,word:'ayah',lbl:'ayah·爸爸'},{x:68,y:92,word:'ibu',lbl:'ibu·妈妈'},{x:280,y:92,word:'kakak',lbl:'kakak·兄/姐'},{x:108,y:152,word:'adik',lbl:'adik·弟/妹'},{x:258,y:152,word:'anak',lbl:'anak·孩子'},{x:60,y:200,word:'keluarga',lbl:'keluarga·家庭'},{x:295,y:200,word:'teman',lbl:'teman·朋友'}],sh:[{t:'circle',cx:180,cy:70,r:25,f:'#fcd5a0'},{t:'rect',x:162,y:95,w:36,h:55,f:'#e8a020',rx:5},{t:'circle',cx:100,cy:100,r:20,f:'#fcd5a0'},{t:'rect',x:85,y:120,w:30,h:45,f:'#c0392b',rx:5},{t:'circle',cx:260,cy:100,r:20,f:'#fcd5a0'},{t:'rect',x:245,y:120,w:30,h:45,f:'#2980b9',rx:5},{t:'circle',cx:130,cy:160,r:15,f:'#fcd5a0'},{t:'rect',x:118,y:175,w:24,h:40,f:'#27ae60',rx:4},{t:'circle',cx:230,cy:160,r:15,f:'#fcd5a0'},{t:'rect',x:218,y:175,w:24,h:40,f:'#9b59b6',rx:4},{t:'rect',x:20,y:230,w:320,h:3,f:'#e8d0a0'}]},
+    transport:{bg:'#f0f0ff',title:'Transportasi · 交通',pins:[{x:80,y:125,word:'mobil',lbl:'mobil·汽车'},{x:250,y:95,word:'bus',lbl:'bus·公交车'},{x:50,y:210,word:'jalan',lbl:'jalan·路'},{x:200,y:220,word:'tiket',lbl:'tiket·票'},{x:295,y:220,word:'kanan',lbl:'kanan·右'},{x:30,y:155,word:'kiri',lbl:'kiri·左'},{x:290,y:155,word:'jauh',lbl:'jauh·远'}],sh:[{t:'rect',x:0,y:190,w:360,h:70,f:'#888',rx:0},{t:'rect',x:0,y:195,w:360,h:4,f:'#fff'},{t:'rect',x:0,y:250,w:360,h:4,f:'#fff'},{t:'rect',x:30,y:130,w:100,h:60,f:'#e74c3c',rx:8},{t:'rect',x:15,y:155,w:20,h:30,f:'#c0392b'},{t:'rect',x:115,y:155,w:20,h:30,f:'#c0392b'},{t:'circle',cx:40,cy:190,r:12,f:'#333'},{t:'circle',cx:110,cy:190,r:12,f:'#333'},{t:'rect',x:180,y:100,w:140,h:90,f:'#3498db',rx:6},{t:'rect',x:165,y:130,w:20,h:55,f:'#2980b9'},{t:'rect',x:320,y:130,w:20,h:55,f:'#2980b9'},{t:'circle',cx:200,cy:192,r:12,f:'#333'},{t:'circle',cx:240,cy:192,r:12,f:'#333'},{t:'circle',cx:280,cy:192,r:12,f:'#333'},{t:'circle',cx:310,cy:192,r:12,f:'#333'}]},
+    greet:{bg:'#f0fff4',title:'Salam · 打招呼',pins:[{x:100,y:55,word:'halo',lbl:'halo·你好'},{x:260,y:55,word:'terima kasih',lbl:'terima kasih·谢谢'},{x:55,y:165,word:'selamat pagi',lbl:'selamat pagi·早上好'},{x:290,y:165,word:'maaf',lbl:'maaf·对不起'},{x:85,y:225,word:'ya',lbl:'ya·是的'},{x:280,y:225,word:'tidak',lbl:'tidak·不'},{x:180,y:165,word:'sampai jumpa',lbl:'sampai jumpa·再见'}],sh:[{t:'circle',cx:100,cy:100,r:40,f:'#fcd5a0'},{t:'circle',cx:260,cy:100,r:40,f:'#a0d0fc'},{t:'rect',x:75,y:140,w:50,h:70,f:'#e8a020',rx:8},{t:'rect',x:235,y:140,w:50,h:70,f:'#2980b9',rx:8},{t:'path',d:'M140,100 Q180,70 220,100',stroke:'#27ae60',sw:3,f:'none'},{t:'rect',x:110,y:200,w:140,h:40,f:'#e8fff0',rx:10},{t:'text',x:120,y:98,txt:'😊',sz:28},{t:'text',x:245,y:98,txt:'😊',sz:28},{t:'text',x:148,y:224,txt:'Halo! 👋',sz:14,fill:'#27ae60'}]},
+    number:{bg:'#f8f0ff',title:'Angka · 数字',pins:[{x:50,y:45,word:'satu',lbl:'satu·一'},{x:120,y:45,word:'dua',lbl:'dua·二'},{x:190,y:45,word:'tiga',lbl:'tiga·三'},{x:260,y:45,word:'empat',lbl:'empat·四'},{x:50,y:120,word:'lima',lbl:'lima·五'},{x:120,y:120,word:'enam',lbl:'enam·六'},{x:190,y:120,word:'tujuh',lbl:'tujuh·七'},{x:260,y:120,word:'delapan',lbl:'delapan·八'},{x:50,y:197,word:'sembilan',lbl:'sembilan·九'},{x:155,y:197,word:'sepuluh',lbl:'sepuluh·十'},{x:278,y:197,word:'tahun',lbl:'tahun·年'}],sh:[{t:'rect',x:20,y:35,w:60,h:60,f:'#e8d5fc',rx:8},{t:'text',x:50,y:73,txt:'1',sz:32,fill:'#9b59b6'},{t:'rect',x:90,y:35,w:60,h:60,f:'#d5e8fc',rx:8},{t:'text',x:120,y:73,txt:'2',sz:32,fill:'#2980b9'},{t:'rect',x:160,y:35,w:60,h:60,f:'#d5fce8',rx:8},{t:'text',x:190,y:73,txt:'3',sz:32,fill:'#27ae60'},{t:'rect',x:230,y:35,w:60,h:60,f:'#fce8d5',rx:8},{t:'text',x:260,y:73,txt:'4',sz:32,fill:'#e67e22'},{t:'rect',x:20,y:110,w:60,h:60,f:'#fcd5d5',rx:8},{t:'text',x:50,y:148,txt:'5',sz:32,fill:'#c0392b'},{t:'rect',x:90,y:110,w:60,h:60,f:'#e8fcd5',rx:8},{t:'text',x:120,y:148,txt:'6',sz:32,fill:'#16a085'},{t:'rect',x:160,y:110,w:60,h:60,f:'#fce8fc',rx:8},{t:'text',x:190,y:148,txt:'7',sz:32,fill:'#8e44ad'},{t:'rect',x:230,y:110,w:60,h:60,f:'#fcf8d5',rx:8},{t:'text',x:260,y:148,txt:'8',sz:32,fill:'#d4ac0d'},{t:'rect',x:20,y:190,w:60,h:60,f:'#d5f0fc',rx:8},{t:'text',x:50,y:228,txt:'9',sz:32,fill:'#1abc9c'},{t:'rect',x:90,y:190,w:130,h:60,f:'#f5d5e8',rx:8},{t:'text',x:155,y:228,txt:'10',sz:32,fill:'#c0392b'},{t:'rect',x:230,y:190,w:90,h:60,f:'#e8e8e8',rx:8}]},
+    work:{bg:'#eef4ff',title:'Kerja · 工作学习',pins:[{x:130,y:70,word:'kerja',lbl:'kerja·工作'},{x:50,y:175,word:'kantor',lbl:'kantor·办公室'},{x:285,y:60,word:'sekolah',lbl:'sekolah·学校'},{x:285,y:120,word:'belajar',lbl:'belajar·学习'},{x:90,y:200,word:'guru',lbl:'guru·老师'},{x:185,y:200,word:'murid',lbl:'murid·学生'},{x:260,y:200,word:'dokter',lbl:'dokter·医生'}],sh:[{t:'rect',x:20,y:40,w:320,h:200,f:'#f5f8ff',rx:8},{t:'rect',x:30,y:50,w:200,h:120,f:'#fff',rx:6},{t:'rect',x:40,y:60,w:180,h:100,f:'#e8f0fe',rx:4},{t:'text',x:80,y:115,txt:'📊 📈 📋',sz:20},{t:'rect',x:240,y:50,w:90,h:50,f:'#fff9e6',rx:6},{t:'text',x:258,y:82,txt:'📚',sz:28},{t:'rect',x:240,y:110,w:90,h:60,f:'#fff0f0',rx:6},{t:'text',x:260,y:145,txt:'✏️📝',sz:22},{t:'rect',x:30,y:185,w:295,h:50,f:'#fff',rx:6},{t:'text',x:90,y:215,txt:'👨‍💼  👩‍💼  👨‍🏫  👩‍⚕️',sz:20}]},
+    nature:{bg:'#efffef',title:'Alam · 自然',pins:[{x:60,y:20,word:'matahari',lbl:'matahari·太阳'},{x:265,y:20,word:'angin',lbl:'angin·风'},{x:157,y:55,word:'pohon',lbl:'pohon·树'},{x:75,y:195,word:'bunga',lbl:'bunga·花'},{x:180,y:200,word:'laut',lbl:'laut·海'},{x:300,y:100,word:'gunung',lbl:'gunung·山'},{x:60,y:160,word:'hujan',lbl:'hujan·雨'}],sh:[{t:'rect',x:0,y:160,w:360,h:100,f:'#4a7c59',rx:0},{t:'rect',x:0,y:0,w:360,h:170,f:'#87ceeb',rx:0},{t:'circle',cx:60,cy:55,r:35,f:'#FFD700'},{t:'circle',cx:250,cy:40,r:25,f:'#fff'},{t:'circle',cx:280,cy:35,r:20,f:'#fff'},{t:'circle',cx:265,cy:28,r:18,f:'#fff'},{t:'rect',x:150,y:80,w:15,h:80,f:'#5D4037'},{t:'ellipse',cx:157,cy:70,rx:35,ry:28,f:'#2e7d32'},{t:'rect',x:220,y:100,w:12,h:60,f:'#5D4037'},{t:'ellipse',cx:226,cy:92,rx:28,ry:22,f:'#388e3c'},{t:'rect',x:0,y:185,w:360,h:10,f:'#1565C0'},{t:'text',x:20,y:230,txt:'🌺 🌻 🌸',sz:24},{t:'ellipse',cx:290,cy:130,rx:50,ry:35,f:'#546e7a'},{t:'ellipse',cx:310,cy:110,rx:35,ry:28,f:'#607d8b'}]},
+    health:{bg:'#fff0f0',title:'Kesehatan · 健康',pins:[{x:100,y:88,word:'sakit',lbl:'sakit·生病'},{x:100,y:175,word:'dokter',lbl:'dokter·医生'},{x:20,y:52,word:'rumah sakit',lbl:'rumah sakit·医院'},{x:300,y:85,word:'demam',lbl:'demam·发烧'},{x:300,y:125,word:'obat',lbl:'obat·药'},{x:300,y:165,word:'istirahat',lbl:'istirahat·休息'},{x:300,y:205,word:'tidur',lbl:'tidur·睡觉'}],sh:[{t:'rect',x:20,y:40,w:320,h:220,f:'#fff',rx:12},{t:'rect',x:155,y:30,w:50,h:25,f:'#e74c3c',rx:4},{t:'rect',x:172,y:15,w:16,h:55,f:'#e74c3c',rx:3},{t:'circle',cx:100,cy:130,r:45,f:'#fcd5a0'},{t:'rect',x:77,y:175,w:46,h:65,f:'#3498db',rx:6},{t:'text',x:100,y:138,txt:'😷',sz:28},{t:'rect',x:180,y:80,w:130,h:30,f:'#fef3f3',rx:5},{t:'text',x:193,y:102,txt:'🌡️ demam',sz:12,fill:'#e74c3c'},{t:'rect',x:180,y:120,w:130,h:30,f:'#f0fff4',rx:5},{t:'text',x:195,y:140,txt:'💊 obat',sz:12,fill:'#27ae60'},{t:'rect',x:180,y:160,w:130,h:30,f:'#fff8e1',rx:5},{t:'text',x:200,y:180,txt:'🛏️ istirahat',sz:12,fill:'#f39c12'},{t:'rect',x:180,y:200,w:130,h:30,f:'#f3e5f5',rx:5},{t:'text',x:193,y:220,txt:'😴 tidur',sz:12,fill:'#9b59b6'}]},
+    feeling:{bg:'#fffaee',title:'Perasaan · 情感',pins:[{x:80,y:42,word:'senang',lbl:'senang·高兴'},{x:180,y:42,word:'sedih',lbl:'sedih·难过'},{x:280,y:42,word:'marah',lbl:'marah·生气'},{x:80,y:148,word:'takut',lbl:'takut·害怕'},{x:180,y:148,word:'cinta',lbl:'cinta·爱'},{x:280,y:148,word:'bosan',lbl:'bosan·无聊'},{x:180,y:265,word:'baik',lbl:'baik·好'}],sh:[{t:'circle',cx:80,cy:80,r:40,f:'#FFD700'},{t:'text',x:65,y:88,txt:'😊',sz:32},{t:'circle',cx:180,cy:80,r:40,f:'#87ceeb'},{t:'text',x:165,y:88,txt:'😢',sz:32},{t:'circle',cx:280,cy:80,r:40,f:'#ff8c69'},{t:'text',x:265,y:88,txt:'😡',sz:32},{t:'circle',cx:80,cy:185,r:40,f:'#dda0dd'},{t:'text',x:65,y:193,txt:'😱',sz:32},{t:'circle',cx:180,cy:185,r:40,f:'#98fb98'},{t:'text',x:165,y:193,txt:'😍',sz:32},{t:'circle',cx:280,cy:185,r:40,f:'#f0e68c'},{t:'text',x:265,y:193,txt:'😴',sz:32},{t:'text',x:58,y:135,txt:'senang',sz:10,fill:'#b8860b'},{t:'text',x:160,y:135,txt:'sedih',sz:10,fill:'#4682b4'},{t:'text',x:262,y:135,txt:'marah',sz:10,fill:'#8b2500'},{t:'text',x:62,y:240,txt:'takut',sz:10,fill:'#6a0dad'},{t:'text',x:168,y:240,txt:'cinta',sz:10,fill:'#006400'},{t:'text',x:268,y:240,txt:'bosan',sz:10,fill:'#8b6914'}]}
   };
-
-  const cfg = configs[key];
-  if(!cfg) return '<svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="280" fill="#eee"/></svg>';
-
-  let s = `<svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg">`;
-  s += `<rect width="360" height="280" fill="${cfg.bg}"/>`;
-
-  // Draw shapes
-  for(const sh of cfg.shapes) {
-    if(sh.type==='rect') s += `<rect x="${sh.x}" y="${sh.y}" width="${sh.w}" height="${sh.h}" fill="${sh.fill||'#ccc'}" rx="${sh.rx||0}"/>`;
-    else if(sh.type==='circle') s += `<circle cx="${sh.cx}" cy="${sh.cy}" r="${sh.r}" fill="${sh.fill||'#ccc'}"/>`;
-    else if(sh.type==='ellipse') s += `<ellipse cx="${sh.cx}" cy="${sh.cy}" rx="${sh.rx}" ry="${sh.ry}" fill="${sh.fill||'#ccc'}"/>`;
-    else if(sh.type==='path') s += `<path d="${sh.d}" stroke="${sh.stroke||'#000'}" stroke-width="${sh.sw||1}" fill="${sh.fill||'none'}"/>`;
-    else if(sh.type==='text') s += `<text x="${sh.x}" y="${sh.y}" font-size="${sh.size||14}" fill="${sh.fill||'#333'}" text-anchor="middle">${sh.text}</text>`;
+  const cfg=cfgs[key];
+  if(!cfg)return'<svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="280" fill="#eee"/></svg>';
+  const wset=new Set(words.map(w=>w[0]));
+  let s=`<svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="280" fill="${cfg.bg}"/>`;
+  for(const sh of cfg.sh){
+    if(sh.t==='rect')s+=`<rect x="${sh.x}" y="${sh.y}" width="${sh.w}" height="${sh.h||0}" fill="${sh.f||'#ccc'}" rx="${sh.rx||0}"/>`;
+    else if(sh.t==='circle')s+=`<circle cx="${sh.cx}" cy="${sh.cy}" r="${sh.r}" fill="${sh.f||'#ccc'}"/>`;
+    else if(sh.t==='ellipse')s+=`<ellipse cx="${sh.cx}" cy="${sh.cy}" rx="${sh.rx}" ry="${sh.ry}" fill="${sh.f||'#ccc'}"/>`;
+    else if(sh.t==='path')s+=`<path d="${sh.d}" stroke="${sh.stroke||'#000'}" stroke-width="${sh.sw||1}" fill="${sh.f||'none'}"/>`;
+    else if(sh.t==='text')s+=`<text x="${sh.x}" y="${sh.y}" font-size="${sh.sz||14}" fill="${sh.fill||'#333'}" text-anchor="middle">${sh.txt}</text>`;
   }
-
-  // Word pins
-  const wset = new Set(words.map(w=>w[0]));
-  for(const p of cfg.pins) {
-    if(!wset.has(p.word)) continue;
-    const isLearned = learned.has(p.word);
-    const pc = isLearned ? '#27ae60' : '#c0392b';
-    const label = p.label;
-    const parts = label.split(' ');
-    const indo = parts[0];
-    const cn = parts.slice(1).join(' ');
-    // Pin circle + label box
-    s += `<g class="word-pin" onclick="pinTap('${p.word}')" style="cursor:pointer">`;
-    s += `<circle cx="${p.x}" cy="${p.y}" r="7" fill="${pc}" opacity="0.9"/>`;
-    s += `<circle cx="${p.x}" cy="${p.y}" r="4" fill="#fff"/>`;
-    // Label
-    const lx = p.x > 220 ? p.x - 6 : p.x + 10;
-    const anchor = p.x > 220 ? 'end' : 'start';
-    const ly = p.y < 40 ? p.y + 18 : p.y - 10;
-    s += `<rect x="${anchor==='end'?lx-60:lx-2}" y="${ly-12}" width="64" height="24" fill="rgba(255,255,255,0.92)" rx="5"/>`;
-    s += `<text x="${anchor==='end'?lx-30:lx+30}" y="${ly+1}" font-size="9" fill="${pc}" font-weight="bold" text-anchor="middle">${indo}</text>`;
-    s += `<text x="${anchor==='end'?lx-30:lx+30}" y="${ly+11}" font-size="8" fill="#666" text-anchor="middle">${cn}</text>`;
-    s += `</g>`;
+  for(const p of cfg.pins){
+    if(!wset.has(p.word))continue;
+    const isL=learned.has(p.word);const pc=isL?'#27ae60':'#c0392b';
+    const pts=p.lbl.split('·');const indo=pts[0];const cn=pts[1]||'';
+    const anchor=p.x>220?'end':'start';const lx=p.x>220?p.x-10:p.x+10;const ly=p.y<40?p.y+20:p.y-12;
+    s+=`<g class="word-pin" onclick="pinTap('${p.word.replace(/'/g,"\\'")}')"><circle cx="${p.x}" cy="${p.y}" r="7" fill="${pc}" opacity="0.9"/><circle cx="${p.x}" cy="${p.y}" r="3.5" fill="#fff"/><rect x="${anchor==='end'?lx-68:lx-2}" y="${ly-13}" width="70" height="26" fill="rgba(255,255,255,0.93)" rx="5"/><text x="${anchor==='end'?lx-37:lx+33}" y="${ly}" font-size="9" fill="${pc}" font-weight="bold" text-anchor="middle">${indo}</text><text x="${anchor==='end'?lx-37:lx+33}" y="${ly+11}" font-size="8" fill="#555" text-anchor="middle">${cn}</text></g>`;
   }
-
-  // Title
-  s += `<rect x="0" y="260" width="360" height="20" fill="rgba(0,0,0,0.15)"/>`;
-  s += `<text x="180" y="274" font-size="11" fill="#fff" text-anchor="middle" font-weight="600">${cfg.title}</text>`;
-  s += `</svg>`;
+  s+=`<rect x="0" y="262" width="360" height="18" fill="rgba(0,0,0,0.15)"/><text x="180" y="275" font-size="10" fill="#fff" text-anchor="middle" font-weight="600">${cfg.title}</text></svg>`;
   return s;
 }
 
-// ── State (localStorage持久化) ──
-const STORAGE_KEY = 'indo_learned_v1';
-
-function loadLearned() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? new Set(JSON.parse(raw)) : new Set();
-  } catch(e) { return new Set(); }
-}
-function saveLearned() {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...learned])); } catch(e) {}
-}
-
-const learned = loadLearned(); // 启动时从本地读取
-let cardIdx = 0, cardWords = [...WORDS];
-let quizMode = 'i2c', quizCur = null, qok=0, qno=0;
-let streak = 0;
-
-function markLearned(word) {
-  if(learned.has(word)) return;
-  learned.add(word);
-  saveLearned(); // 每次新增就存一次
-  updateStats();
-}
-function updateStats() {
-  const n = learned.size;
-  document.getElementById('sl').textContent = n;
-  document.getElementById('cl').textContent = n;
-  document.getElementById('pf').style.width = (n/150*100).toFixed(1)+'%';
-  document.getElementById('cpf').style.width = (n/150*100).toFixed(1)+'%';
-  document.getElementById('qlrn').textContent = n;
-  // Scenes completed
-  const done = SCENES.filter(s=>s.words.every(w=>learned.has(w[0]))).length;
-  document.getElementById('ss').textContent = done+'/'+SCENES.length;
-  // Unlock banner
-  const area = document.getElementById('unlock-area');
-  if(n >= 100) {
-    area.innerHTML = `<div class="unlock-banner"><div class="icon">🔓</div><div><h3>基础词汇解锁！</h3><p>已掌握${n}个核心词，可以开始学习1000词了！</p></div></div>`;
-  } else {
-    area.innerHTML = '';
-  }
-  // Re-render scene grid to update badges
-  renderSceneGrid();
-}
-
-// ── Scene page ──
-function renderSceneGrid() {
-  const grid = document.getElementById('scene-grid');
-  grid.innerHTML = SCENES.map(s => {
-    const total = s.words.length;
-    const done = s.words.filter(w=>learned.has(w[0])).length;
-    const pct = Math.round(done/total*100);
-    const allDone = done===total;
-    return `<div class="scene-card" onclick="openScene('${s.key}')">
-      <div class="scene-thumb" style="background:${s.color}">${s.emoji}</div>
-      ${allDone?`<div class="scene-done">✓ 完成</div>`:''}
-      <div class="scene-badge">${done}/${total}</div>
-      <div class="scene-info">
-        <div class="scene-title">${s.title}</div>
-        <div class="scene-sub">${s.sub}</div>
-        <div style="height:3px;background:#eee;border-radius:2px;margin-top:5px;overflow:hidden">
-          <div style="height:100%;width:${pct}%;background:${s.accent};border-radius:2px;transition:width .3s"></div>
-        </div>
-      </div>
-    </div>`;
+function renderSceneGrid(){
+  document.getElementById('scene-grid').innerHTML=SCENES.map(s=>{
+    const total=s.words.length;const done=s.words.filter(w=>learned.has(w[0])).length;const pct=Math.round(done/total*100);
+    return`<div class="scene-card" onclick="openScene('${s.key}')"><div class="scene-thumb" style="background:${s.color}">${s.emoji}</div>${done===total?'<div class="scene-done">✓ 完成</div>':''}<div class="scene-badge">${done}/${total}</div><div class="scene-info"><div class="scene-title">${s.title}</div><div class="scene-sub">${s.sub}</div><div style="height:3px;background:#eee;border-radius:2px;margin-top:5px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${s.accent};border-radius:2px;transition:width .3s"></div></div></div></div>`;
   }).join('');
 }
 
-function openScene(key) {
-  const s = SCENES.find(x=>x.key===key);
-  if(!s) return;
+function openScene(key){
+  const s=SCENES.find(x=>x.key===key);if(!s)return;
+  s.words.forEach(w=>markLearned(w[0]));
   document.getElementById('scene-list-view').style.display='none';
   document.getElementById('scene-detail-view').classList.add('on');
-  // Mark all words as seen when opening scene
-  s.words.forEach(w => markLearned(w[0]));
-  renderSceneDetail(s);
+  let html=`<div class="scene-illustration">${makeSVG(s.key,s.words)}</div><div class="scene-words"><h3>本场景词汇 · ${s.words.length}个</h3>`;
+  s.words.forEach((w,i)=>{html+=`<div class="word-row" onclick="speakIndo('${w[0].replace(/'/g,"\\'")}')"><span class="wr-num">${i+1}</span><span class="wr-indo">${w[0]}</span><span class="wr-ph">${w[1]}</span><span class="wr-cn">${w[2]}</span><svg class="wr-play" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>`;});
+  html+='</div>';
+  document.getElementById('scene-content').innerHTML=html;
 }
+function backToScenes(){document.getElementById('scene-list-view').style.display='';document.getElementById('scene-detail-view').classList.remove('on');renderSceneGrid();}
+function pinTap(w){speakIndo(w);}
 
-function renderSceneDetail(s) {
-  const svg = makeSVG(s.svgKey, s.words);
-  let html = `<div class="scene-illustration">${svg}</div>`;
-  html += `<div class="scene-words"><h3>本场景词汇 · ${s.words.length}个</h3>`;
-  s.words.forEach((w,i) => {
-    html += `<div class="word-row" onclick="speakWord('${w[0]}')">
-      <span class="wr-num">${i+1}</span>
-      <span class="wr-indo">${w[0]}</span>
-      <span class="wr-ph">${w[1]}</span>
-      <span class="wr-cn">${w[2]}</span>
-      <svg class="wr-play" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-    </div>`;
-  });
-  html += '</div>';
-  document.getElementById('scene-content').innerHTML = html;
-}
-
-function backToScenes() {
-  document.getElementById('scene-list-view').style.display='';
-  document.getElementById('scene-detail-view').classList.remove('on');
-  renderSceneGrid();
-}
-
-function pinTap(word) {
-  const w = WORDS.find(x=>x[0]===word);
-  if(!w) return;
-  speakWord(word);
-}
-
-// ── Word cards ──
-function upCard() {
-  const w = cardWords[cardIdx];
-  const s = SCENES.find(sc=>sc.key===w[3]);
-  document.getElementById('fc-scene').textContent = s?s.emoji:'📚';
-  document.getElementById('fc-indo').textContent = w[0];
-  document.getElementById('fc-ph').textContent = w[1];
-  document.getElementById('fc-cn').textContent = w[2];
-  document.getElementById('fc-tag').textContent = s?s.title:w[3];
+function upCard(){
+  const w=cardWords[cardIdx];const s=SCENES.find(sc=>sc.key===w[3]);
+  document.getElementById('fc-scene').textContent=s?s.emoji:'📚';
+  document.getElementById('fc-indo').textContent=w[0];document.getElementById('fc-ph').textContent=w[1];
+  document.getElementById('fc-cn').textContent=w[2];document.getElementById('fc-tag').textContent=s?s.title:w[3];
   markLearned(w[0]);
 }
-function nextCard() { cardIdx=(cardIdx+1)%cardWords.length; streak++; document.getElementById('cstreak').textContent=streak; upCard(); }
-function prevCard() { cardIdx=(cardIdx-1+cardWords.length)%cardWords.length; upCard(); }
-function randCard() { cardIdx=Math.floor(Math.random()*cardWords.length); upCard(); }
-function spCard() { speak(cardWords[cardIdx][0], 'fc-anim'); }
+function nextCard(){cardIdx=(cardIdx+1)%cardWords.length;streak++;document.getElementById('cstreak').textContent=streak;upCard();}
+function prevCard(){cardIdx=(cardIdx-1+cardWords.length)%cardWords.length;upCard();}
+function randCard(){cardIdx=Math.floor(Math.random()*cardWords.length);upCard();}
+function spCard(){speakIndo(cardWords[cardIdx][0],'fc-anim');}
 
-// ── Word list ──
-function buildWordListFilter() {
-  const sel = document.getElementById('wcat');
-  sel.innerHTML = '<option value="">全部词汇 ('+WORDS.length+'词)</option>';
-  SCENES.forEach(s => sel.innerHTML += `<option value="${s.key}">${s.emoji} ${s.title}</option>`);
+function buildFilters(){
+  const opts=SCENES.map(s=>`<option value="${s.key}">${s.emoji} ${s.title}</option>`).join('');
+  document.getElementById('wcat').innerHTML='<option value="">全部词汇 ('+WORDS.length+'词)</option>'+opts;
+  document.getElementById('scat').innerHTML='<option value="">全部场景 ('+SENTS.length+'句)</option>'+opts;
 }
-function renderWordList() {
-  const cat = document.getElementById('wcat').value;
-  const list = cat ? WORDS.filter(w=>w[3]===cat) : WORDS;
-  document.getElementById('wbadge').textContent = list.length+'个词';
-  document.getElementById('wl').innerHTML = list.map((w,i) => {
-    const s = SCENES.find(sc=>sc.key===w[3]);
-    const dot = learned.has(w[0]) ? '<span class="learned-dot"></span>' : '';
-    return `<div class="word-row" onclick="speakWord('${w[0]}')" style="padding:10px 12px">
-      <span class="wr-num">${i+1}</span>
-      <div style="flex:1;min-width:0">
-        <div style="display:flex;align-items:center;gap:4px">
-          <span class="wr-indo" style="font-size:14px">${w[0]}</span>${dot}
-        </div>
-        <div class="wr-ph">${w[1]}</div>
-      </div>
-      <span class="wr-cn" style="font-size:13px">${w[2]}</span>
-      <svg class="wr-play" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-    </div>`;
+function renderWordList(){
+  const cat=document.getElementById('wcat').value;const list=cat?WORDS.filter(w=>w[3]===cat):WORDS;
+  document.getElementById('wbadge').textContent=list.length+'个词';
+  document.getElementById('wl').innerHTML=list.map((w,i)=>{
+    const dot=learned.has(w[0])?'<span class="ldot"></span>':'';
+    return`<div class="word-row" onclick="speakIndo('${w[0].replace(/'/g,"\\'")}')"><span class="wr-num">${i+1}</span><div style="flex:1;min-width:0"><div style="display:flex;align-items:center;gap:4px"><span class="wr-indo" style="font-size:13px">${w[0]}</span>${dot}</div><div class="wr-ph">${w[1]}</div></div><span class="wr-cn" style="font-size:12px">${w[2]}</span><svg class="wr-play" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>`;
   }).join('');
 }
+function renderSents(){
+  const cat=document.getElementById('scat').value;const list=cat?SENTS.filter(s=>s[3]===cat):SENTS;
+  document.getElementById('sbadge').textContent=list.length+'句';
+  document.getElementById('sent-list').innerHTML=list.map((s,i)=>{
+    const sc=SCENES.find(x=>x.key===s[3]);const gi=SENTS.indexOf(s);
+    return`<div class="sent-card" id="sc-${gi}" onclick="playSent(${gi})"><div class="sent-indo">${s[0]}</div><div class="sent-ph">${s[1]}</div><div class="sent-cn">${s[2]}</div><div class="sent-footer"><span class="sent-scene">${sc?sc.emoji+' '+sc.title:s[3]}</span><svg class="wr-play" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div></div>`;
+  }).join('');
+}
+function playSent(idx){speakIndo(SENTS[idx][0],null);document.querySelectorAll('.sent-card').forEach(c=>c.style.borderLeft='');const el=document.getElementById('sc-'+idx);if(el)el.style.borderLeft='3px solid #c0392b';}
 
-// ── Quiz ──
-function refreshQuiz() {
-  const lw = [...learned].map(k => WORDS.find(w=>w[0]===k)).filter(Boolean);
-  document.getElementById('qlrn').textContent = lw.length;
-  const empty = document.getElementById('quiz-empty');
-  const body = document.getElementById('quiz-body');
-  if(lw.length < 4) {
-    empty.classList.remove('hid'); body.classList.add('hid');
-    empty.querySelector('span').textContent = lw.length===0
-      ? '先去「场景」模式逛一逛，词汇会自动记录！'
-      : `还需再学 ${4-lw.length} 个词才能开始测试。`;
-  } else {
-    empty.classList.add('hid'); body.classList.remove('hid');
-    nextQuiz(lw);
-  }
+function refreshQuiz(){
+  const lw=[...learned].map(k=>WORDS.find(w=>w[0]===k)).filter(Boolean);
+  document.getElementById('qlrn').textContent=lw.length;
+  const empty=document.getElementById('quiz-empty');const body=document.getElementById('quiz-body');
+  if(lw.length<4){empty.classList.remove('hid');body.classList.add('hid');empty.querySelector('span').textContent=lw.length===0?'先去「场景」逛一逛，词汇会自动记录！':`还需再学 ${4-lw.length} 个词。`;}
+  else{empty.classList.add('hid');body.classList.remove('hid');nextQuiz(lw);}
 }
-function nextQuiz(lw) {
-  if(!lw) lw = [...learned].map(k=>WORDS.find(w=>w[0]===k)).filter(Boolean);
+function nextQuiz(lw){
+  if(!lw)lw=[...learned].map(k=>WORDS.find(w=>w[0]===k)).filter(Boolean);
   if(lw.length<4){refreshQuiz();return;}
-  quizCur = lw[Math.floor(Math.random()*lw.length)];
-  const s = SCENES.find(sc=>sc.key===quizCur[3]);
-  document.getElementById('qq').textContent = quizMode==='i2c' ? quizCur[0] : quizCur[2];
-  document.getElementById('qs').textContent = (quizMode==='i2c' ? (s?s.emoji+' ':'')+'选中文意思' : '选印尼语') + ' · 共'+lw.length+'词';
-  const pool = lw.filter(w=>w!==quizCur);
-  const wrong=[];
+  quizCur=lw[Math.floor(Math.random()*lw.length)];
+  const s=SCENES.find(sc=>sc.key===quizCur[3]);
+  document.getElementById('qq').textContent=quizMode==='i2c'?quizCur[0]:quizCur[2];
+  document.getElementById('qs').textContent=(quizMode==='i2c'?(s?s.emoji+' ':'')+'选中文':'选印尼语')+' · 共'+lw.length+'词';
+  const pool=lw.filter(w=>w!==quizCur);const wrong=[];
   while(wrong.length<3&&pool.length>wrong.length){const r=pool[Math.floor(Math.random()*pool.length)];if(!wrong.includes(r))wrong.push(r);}
-  const opts = [quizCur,...wrong].sort(()=>Math.random()-.5);
-  document.getElementById('qo').innerHTML = opts.map(w=>
-    `<button class="qb" onclick="chkQuiz(this,'${w[0].replace(/'/g,"\\'")}')">
-      ${quizMode==='i2c'?w[2]:w[0]}
-    </button>`).join('');
-  document.getElementById('qh').textContent = '只考已学过的'+lw.length+'个词';
+  document.getElementById('qo').innerHTML=[quizCur,...wrong].sort(()=>Math.random()-.5).map(w=>`<button class="qb" onclick="chkQ(this,'${w[0].replace(/'/g,"\\'")}')">  ${quizMode==='i2c'?w[2]:w[0]}</button>`).join('');
+  document.getElementById('qh').textContent='只考已学过的'+lw.length+'个词';
 }
-function chkQuiz(btn, indo) {
-  const ok = indo===quizCur[0];
-  document.querySelectorAll('.qb').forEach(b=>b.disabled=true);
-  btn.classList.add(ok?'ok':'no');
-  if(!ok) document.querySelectorAll('.qb').forEach(b=>{
-    if((quizMode==='i2c'&&b.textContent.trim()===quizCur[2])||
-       (quizMode==='c2i'&&b.textContent.trim()===quizCur[0]))b.classList.add('ok');
-  });
+function chkQ(btn,indo){
+  const ok=indo===quizCur[0];document.querySelectorAll('.qb').forEach(b=>b.disabled=true);btn.classList.add(ok?'ok':'no');
+  if(!ok)document.querySelectorAll('.qb').forEach(b=>{const t=b.textContent.trim();if((quizMode==='i2c'&&t===quizCur[2])||(quizMode==='c2i'&&t===quizCur[0]))b.classList.add('ok');});
   if(ok){qok++;streak++;}else{qno++;streak=0;}
-  document.getElementById('qok').textContent=qok;
-  document.getElementById('qno').textContent=qno;
-  document.getElementById('cstreak').textContent=streak;
-  document.getElementById('qh').textContent=ok?'✓ 正确！':'✗ 错了，绿色为正确答案';
+  document.getElementById('qok').textContent=qok;document.getElementById('qno').textContent=qno;document.getElementById('cstreak').textContent=streak;
+  document.getElementById('qh').textContent=ok?'✓ Benar!':'✗ Salah!';
   setTimeout(()=>nextQuiz(),1800);
 }
-function setQ(m){
-  quizMode=m;
-  document.getElementById('qi').classList.toggle('on',m==='i2c');
-  document.getElementById('qc').classList.toggle('on',m==='c2i');
-  refreshQuiz();
-}
-function spQuiz(){if(quizCur)speak(quizCur[0],null);}
+function setQ(m){quizMode=m;document.getElementById('qi').classList.toggle('on',m==='i2c');document.getElementById('qc').classList.toggle('on',m==='c2i');refreshQuiz();}
+function spQuiz(){if(quizCur)speakIndo(quizCur[0]);}
 
-// ── TTS ──
-function speak(text, animId) {
-  if(!window.speechSynthesis)return;
-  speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang='id-ID'; u.rate=0.85;
-  const v = speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('id'));
-  if(v) u.voice=v;
-  const an = animId?document.getElementById(animId):null;
-  if(an){an.classList.remove('hid');u.onend=u.onerror=()=>an.classList.add('hid');}
-  const h=document.getElementById('card-hint');
-  if(h)h.textContent=v?'🔊 '+v.name:'⚠️ 未找到印尼语TTS，请在设置中安装id-ID语音';
+function speakIndo(text,animId){
+  if(!window.speechSynthesis)return;speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang='id-ID';u.rate=0.85;
+  const tv=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.startsWith('id'));if(tv)u.voice=tv;
+  const an=animId?document.getElementById(animId):null;if(an){an.classList.remove('hid');u.onend=u.onerror=()=>an.classList.add('hid');}
+  const h=document.getElementById('card-hint');if(h)h.textContent=tv?'🔊 '+tv.name:'⚠️ 请安装印尼语TTS语音包';
   speechSynthesis.speak(u);
 }
-function speakWord(indo){speak(indo,null);}
 
-// ── Reset ──
-function resetProgress() {
-  if(!confirm('确定要清空所有学习记录吗？')) return;
-  learned.clear();
-  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
-  updateStats();
-  renderSceneGrid();
-  refreshQuiz();
-  cardIdx = 0; upCard();
-  streak = 0;
-  document.getElementById('cstreak').textContent = 0;
-  qok=0; qno=0;
-  document.getElementById('qok').textContent=0;
-  document.getElementById('qno').textContent=0;
+function resetProgress(){
+  if(!confirm('确定要清空所有学习记录吗？'))return;
+  learned.clear();try{localStorage.removeItem(STORAGE_KEY);}catch(e){}
+  updateStats();refreshQuiz();cardIdx=0;upCard();streak=0;qok=0;qno=0;
+  document.getElementById('cstreak').textContent=0;document.getElementById('qok').textContent=0;document.getElementById('qno').textContent=0;
 }
 
-// ── Navigation ──
 function go(t){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
-  document.getElementById('p-'+t).classList.add('on');
-  document.getElementById('t-'+t).classList.add('on');
-  if(t==='words')renderWordList();
-  if(t==='quiz')refreshQuiz();
+  document.getElementById('p-'+t).classList.add('on');document.getElementById('t-'+t).classList.add('on');
+  if(t==='words')renderWordList();if(t==='quiz')refreshQuiz();if(t==='sents')renderSents();
 }
 
-// Init
 if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
 document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
-buildWordListFilter();
-renderSceneGrid();
-upCard();
-renderWordList();
-refreshQuiz();
+buildFilters();renderSceneGrid();upCard();renderWordList();renderSents();refreshQuiz();updateStats();
 </script>
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("./sw.js")}</script>
 </body>
