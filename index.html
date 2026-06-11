@@ -222,6 +222,7 @@ select{width:100%;padding:9px 12px;border-radius:12px;border:1.5px solid #e0e0e0
 </div>
 <script>
 const SCENES=[
+{key:'tanya',emoji:'❓',title:'疑问句',sub:'什么·为什么·在哪里·怎么办',color:'#fff7ed',accent:'#e67e22',words:[['apa','a-pa','什么','tanya'],['kenapa','ke-na-pa','为什么','tanya'],['mengapa','meng-a-pa','为什么(正式)','tanya'],['di mana','di ma-na','在哪里','tanya'],['bagaimana','ba-gai-ma-na','怎么样/怎么办','tanya'],['gimana','gi-ma-na','怎么样(口语)','tanya'],['siapa','si-a-pa','谁','tanya'],['kapan','ka-pan','什么时候','tanya'],['berapa','be-ra-pa','多少','tanya']]},
 {key:'home',emoji:'🏠',title:'家里',sub:'房间与家具',color:'#e8f4fd',accent:'#2980b9',words:[['rumah','ru-mah','家/房子','home'],['kamar','ka-mar','房间','home'],['kamar tidur','ka-mar ti-dur','卧室','home'],['kamar mandi','ka-mar man-di','浴室','home'],['dapur','da-pur','厨房','home'],['ruang tamu','ru-ang ta-mu','客厅','home'],['pintu','pin-tu','门','home'],['jendela','jen-de-la','窗户','home'],['meja','me-ja','桌子','home'],['kursi','kur-si','椅子','home'],['tempat tidur','tem-pat ti-dur','床','home'],['lemari','le-ma-ri','衣柜','home'],['lantai','lan-tai','地板','home']]},
 {key:'food',emoji:'🍽️',title:'吃饭',sub:'食物与餐厅',color:'#fef9ee',accent:'#e67e22',words:[['nasi','na-si','米饭','food'],['mie','mi-e','面条','food'],['ayam','a-yam','鸡肉','food'],['ikan','i-kan','鱼','food'],['sayur','sa-yur','蔬菜','food'],['buah','bu-ah','水果','food'],['minum','mi-num','喝','food'],['makan','ma-kan','吃','food'],['air','a-ir','水','food'],['kopi','ko-pi','咖啡','food'],['teh','te','茶','food'],['enak','e-nak','好吃','food'],['pedas','pe-das','辣','food'],['manis','ma-nis','甜','food']]},
 {key:'body',emoji:'🧍',title:'身体',sub:'人体部位',color:'#fef0ee',accent:'#c0392b',words:[['kepala','ke-pa-la','头','body'],['mata','ma-ta','眼睛','body'],['hidung','hi-dung','鼻子','body'],['mulut','mu-lut','嘴','body'],['telinga','te-li-nga','耳朵','body'],['tangan','ta-ngan','手','body'],['kaki','ka-ki','脚','body'],['perut','pe-rut','肚子','body'],['rambut','ram-but','头发','body'],['gigi','gi-gi','牙齿','body'],['punggung','pung-gung','背','body'],['jari','ja-ri','手指','body']]},
@@ -287,6 +288,19 @@ const WORDS=[];const _s=new Set();
 SCENES.forEach(s=>s.words.forEach(w=>{if(!_s.has(w[0])){_s.add(w[0]);WORDS.push(w);}}));
 
 const SENTS=[
+['Ini apa?','i-ni a-pa','这是什么？','tanya'],
+['Itu apa?','i-tu a-pa','那是什么？','tanya'],
+['Kamu mau apa?','ka-mu mau a-pa','你想要什么？','tanya'],
+['Kenapa?','ke-na-pa','为什么？','tanya'],
+['Kenapa kamu terlambat?','ke-na-pa ka-mu ter-lam-bat','你为什么迟到？','tanya'],
+['Kenapa mahal sekali?','ke-na-pa ma-hal se-ka-li','为什么这么贵？','tanya'],
+['Di mana?','di ma-na','在哪里？','tanya'],
+['Kamu di mana?','ka-mu di ma-na','你在哪里？','tanya'],
+['Toilet di mana?','to-i-let di ma-na','厕所在哪里？','tanya'],
+['Stasiun di mana?','sta-si-un di ma-na','车站在哪里？','tanya'],
+['Bagaimana?','ba-gai-ma-na','怎么办？/怎么样？','tanya'],
+['Gimana caranya?','gi-ma-na ca-ra-nya','怎么做？','tanya'],
+['Bagaimana kalau kita makan?','ba-gai-ma-na ka-lau ki-ta ma-kan','我们去吃饭怎么样？','tanya'],
 ['Halo! Apa kabar?','ha-lo a-pa ka-bar','你好！你怎么样？','greet'],
 ['Kabar baik, terima kasih!','ka-bar ba-ik te-ri-ma ka-sih','我很好，谢谢！','greet'],
 ['Selamat pagi! Sudah sarapan?','se-la-mat pa-gi su-dah sa-ra-pan','早上好！吃过早饭了吗？','greet'],
@@ -677,6 +691,41 @@ function speakIndo(text,animId){
   const h=document.getElementById('card-hint');if(h)h.textContent=tv?'🔊 '+tv.name:'⚠️ 请安装印尼语TTS语音包';
   speechSynthesis.speak(u);
 }
+
+/* 连续播放：每句3遍 */
+var _seqStop=false,_seqKeep=null;
+function _seqList(){var c=document.getElementById('scat').value;return c?SENTS.filter(function(s){return s[3]===c;}):SENTS;}
+function playAllSents(){
+ var list=_seqList();if(!list.length){return;}
+ stopAllSents();_seqStop=false;
+ var reps=3,q=[];list.forEach(function(s,i){for(var r=0;r<reps;r++){q.push({t:s[0],cn:s[2],i:i,r:r+1});}});
+ var total=list.length;
+ document.getElementById('seqPlay').style.display='none';document.getElementById('seqStopBtn').style.display='';
+ if(window.speechSynthesis){_seqKeep=setInterval(function(){if(speechSynthesis.speaking){speechSynthesis.resume();}},9000);}
+ var k=0;
+ function nx(){
+  if(_seqStop){return;}
+  if(k>=q.length){_seqDone();return;}
+  var it=q[k++];
+  document.getElementById('seqInfo').innerHTML='第 '+(it.i+1)+'/'+total+' 句 · 第 '+it.r+'/'+reps+' 遍<br><b>'+it.t+'</b><span class="seqcn">'+it.cn+'</span>';
+  if(!window.speechSynthesis){_seqDone();return;}
+  speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(it.t);u.lang='id-ID';u.rate=0.85;
+  var tv=speechSynthesis.getVoices().find(function(v){return v.lang&&v.lang.startsWith('id');});if(tv){u.voice=tv;}
+  u.onend=function(){if(_seqStop){return;}setTimeout(nx,it.r<reps?350:750);};
+  u.onerror=function(){if(_seqStop){return;}setTimeout(nx,300);};
+  speechSynthesis.speak(u);
+ }
+ nx();
+}
+function _seqDone(){var inf=document.getElementById('seqInfo');if(inf){inf.innerHTML='✅ 全部播放完成，可再听一遍';}var p=document.getElementById('seqPlay'),s=document.getElementById('seqStopBtn');if(p){p.style.display='';}if(s){s.style.display='none';}if(_seqKeep){clearInterval(_seqKeep);_seqKeep=null;}}
+function stopAllSents(){_seqStop=true;try{speechSynthesis.cancel();}catch(e){}if(_seqKeep){clearInterval(_seqKeep);_seqKeep=null;}var p=document.getElementById('seqPlay'),s=document.getElementById('seqStopBtn');if(p){p.style.display='';}if(s){s.style.display='none';}}
+(function(){var host=document.getElementById('sent-list');if(!host||document.getElementById('seqbar')){return;}
+ var st=document.createElement('style');st.textContent='.seqbar{margin:0 0 14px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#16a085,#1abc9c);color:#fff}.seqbtn{width:100%;padding:13px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;background:#fff;color:#117a64}.seqbtn.stop{background:rgba(255,255,255,.25);color:#fff}.seqinfo{margin-top:10px;font-size:13px;line-height:1.6;text-align:center}.seqinfo b{display:block;font-size:18px;margin-top:4px}.seqcn{display:block;opacity:.9;font-size:13px;margin-top:2px}';document.head.appendChild(st);
+ var bar=document.createElement('div');bar.id='seqbar';bar.className='seqbar';
+ bar.innerHTML='<button id="seqPlay" class="seqbtn" onclick="playAllSents()">▶ 连续播放（每句念３遍）</button><button id="seqStopBtn" class="seqbtn stop" style="display:none" onclick="stopAllSents()">⏹ 停止播放</button><div id="seqInfo" class="seqinfo">选好上面的场景，点一下就能一次听完整组（每句3遍，约5–8分钟）</div>';
+ host.parentNode.insertBefore(bar,host);
+})();
 
 function resetProgress(){
   if(!confirm('确定要清空所有学习记录吗？'))return;
