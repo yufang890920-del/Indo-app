@@ -202,10 +202,9 @@ select{width:100%;padding:9px 12px;border-radius:12px;border:1.5px solid #e0e0e0
   <!-- 自定义添加词汇 -->
   <div style="background:#fff;border-radius:12px;padding:12px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.07)">
     <div style="font-size:12px;font-weight:600;color:#c0392b;margin-bottom:8px">✏️ 添加自定义词汇</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px">
-      <input id="cw-indo" placeholder="印尼语" style="padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px">
-      <input id="cw-ph" placeholder="音节 (可选)" style="padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px">
-      <input id="cw-cn" placeholder="中文意思" style="padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px">
+      <input id="cw-indo" placeholder="印尼语" style="padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px;min-width:0">
+      <input id="cw-cn" placeholder="中文意思" style="padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px;min-width:0">
     </div>
     <button onclick="addCustomWord()" style="width:100%;padding:9px;background:#c0392b;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">+ 添加到词库</button>
   </div>
@@ -826,25 +825,20 @@ customWords.forEach(w=>{
 
 function addCustomWord(){
   const indo=document.getElementById('cw-indo').value.trim();
-  const ph=document.getElementById('cw-ph').value.trim()||indo;
   const cn=document.getElementById('cw-cn').value.trim();
-  if(!indo||!cn){alert('印尼语和中文意思不能为空！');return;}
+  if(!indo||!cn){alert('两个框都要填！');return;}
   if(_s.has(indo)){alert('这个词已经在词库里了！');return;}
-  const w=[indo,ph,cn,'custom'];
+  const w=[indo,indo,cn,'custom'];
   customWords.push(w);
   saveCustomWords(customWords);
   WORDS.push(w);
   _s.add(indo);
-  // 同步到custom场景
   const customScene=SCENES.find(s=>s.key==='custom');
   if(customScene)customScene.words.push(w);
-  // 自动标记已学
   markLearned(indo);
   document.getElementById('cw-indo').value='';
-  document.getElementById('cw-ph').value='';
   document.getElementById('cw-cn').value='';
   buildFilters();renderWordList();updateStats();
-  // 显示成功提示
   const btn=document.querySelector('[onclick="addCustomWord()"]');
   const orig=btn.textContent;
   btn.textContent='✓ 已添加！';btn.style.background='#27ae60';
