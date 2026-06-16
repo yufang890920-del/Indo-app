@@ -12,9 +12,15 @@
 <title>🇮🇩 印尼语学习</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;overflow:hidden;background:#c0392b}
-body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif}
-#app{display:flex;flex-direction:column;height:100vh;height:-webkit-fill-available;max-width:480px;margin:0 auto;background:#f8f6f1}
+html{height:100%;overflow:hidden}
+body{height:100%;overflow:hidden;background:#c0392b;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif}
+#app{
+  display:flex;flex-direction:column;
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  max-width:480px;margin:0 auto;
+  background:#f8f6f1;
+  overflow:hidden;
+}
 .hdr{background:linear-gradient(135deg,#c0392b,#e74c3c);padding:env(safe-area-inset-top,0px) 16px 10px;padding-top:calc(env(safe-area-inset-top,0px) + 12px);color:#fff;flex-shrink:0}
 .hdr h1{font-size:17px;font-weight:700}
 .hdr p{font-size:11px;opacity:.8;margin-top:2px}
@@ -298,7 +304,9 @@ const SCENES=[
   ['terlambat','ter-lam-bat','迟到/晚了','travel'],
   ['seharian','se-ha-ri-an','一整天','travel'],
   ['duduk','du-duk','坐','travel'],
-]}
+]},
+{key:'custom',emoji:'✏️',title:'我的词汇',sub:'自定义添加的词',color:'#f5f0ff',accent:'#8e44ad',
+ words:[]}
 ];
 
 const WORDS=[];const _s=new Set();
@@ -509,8 +517,9 @@ function updateStats(){
   document.getElementById('pf').style.width=(n/WORDS.length*100).toFixed(1)+'%';
   document.getElementById('cpf').style.width=(n/WORDS.length*100).toFixed(1)+'%';
   document.getElementById('qlrn').textContent=n;
-  const done=SCENES.filter(s=>s.words.every(w=>learned.has(w[0]))).length;
-  document.getElementById('ss').textContent=done+'/'+SCENES.length;
+  const visibleScenes=SCENES.filter(s=>s.key!=='custom'||s.words.length>0);
+  const done=visibleScenes.filter(s=>s.words.length>0&&s.words.every(w=>learned.has(w[0]))).length;
+  document.getElementById('ss').textContent=done+'/'+visibleScenes.length;
   const area=document.getElementById('unlock-area');
   if(n>=100)area.innerHTML=`<div class="unlock-banner"><div class="icon">🔓</div><div><h3>基础词汇解锁！</h3><p>已掌握${n}个核心词！</p></div></div>`;
   else area.innerHTML='';
@@ -603,9 +612,9 @@ function makeSVG(key,words){
 }
 
 function renderSceneGrid(){
-  document.getElementById('scene-grid').innerHTML=SCENES.map(s=>{
-    const total=s.words.length;const done=s.words.filter(w=>learned.has(w[0])).length;const pct=Math.round(done/total*100);
-    return`<div class="scene-card" onclick="openScene('${s.key}')"><div class="scene-thumb" style="background:${s.color}">${s.emoji}</div>${done===total?'<div class="scene-done">✓ 完成</div>':''}<div class="scene-badge">${done}/${total}</div><div class="scene-info"><div class="scene-title">${s.title}</div><div class="scene-sub">${s.sub}</div><div style="height:3px;background:#eee;border-radius:2px;margin-top:5px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${s.accent};border-radius:2px;transition:width .3s"></div></div></div></div>`;
+  document.getElementById('scene-grid').innerHTML=SCENES.filter(s=>s.key!=='custom'||s.words.length>0).map(s=>{
+    const total=s.words.length;const done=s.words.filter(w=>learned.has(w[0])).length;const pct=total?Math.round(done/total*100):0;
+    return`<div class="scene-card" onclick="openScene('${s.key}')"><div class="scene-thumb" style="background:${s.color}">${s.emoji}</div>${done===total&&total>0?'<div class="scene-done">✓ 完成</div>':''}<div class="scene-badge">${done}/${total}</div><div class="scene-info"><div class="scene-title">${s.title}</div><div class="scene-sub">${s.sub}</div><div style="height:3px;background:#eee;border-radius:2px;margin-top:5px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${s.accent};border-radius:2px;transition:width .3s"></div></div></div></div>`;
   }).join('');
 }
 
@@ -635,10 +644,15 @@ function randCard(){cardIdx=Math.floor(Math.random()*cardWords.length);upCard();
 function spCard(){speakIndo(cardWords[cardIdx][0],'fc-anim');}
 
 function buildFilters(){
-  const opts=SCENES.map(s=>`<option value="${s.key}">${s.emoji} ${s.title}</option>`).join('');
-  const customOpt=customWords.length>0?`<option value="custom">✏️ 自定义词汇 (${customWords.length})</option>`:'';
-  document.getElementById('wcat').innerHTML='<option value="">全部词汇 ('+WORDS.length+'词)</option>'+opts+customOpt;
-  document.getElementById('scat').innerHTML='<option value="">全部场景 ('+SENTS.length+'句)</option>'+opts;
+  const opts=SCENES.map(s=>{
+    const label=s.key==='custom'&&s.words.length>0
+      ?`${s.emoji} ${s.title} (${s.words.length})`
+      :s.key==='custom'?null
+      :`${s.emoji} ${s.title}`;
+    return label?`<option value="${s.key}">${label}</option>`:'';
+  }).join('');
+  document.getElementById('wcat').innerHTML='<option value="">全部词汇 ('+WORDS.length+'词)</option>'+opts;
+  document.getElementById('scat').innerHTML='<option value="">全部场景 ('+SENTS.length+'句)</option>'+SCENES.filter(s=>s.key!=='custom').map(s=>`<option value="${s.key}">${s.emoji} ${s.title}</option>`).join('');
 }
 function renderWordList(){
   const cat=document.getElementById('wcat').value;const list=cat?WORDS.filter(w=>w[3]===cat):WORDS;
@@ -658,6 +672,8 @@ function deleteCustomWord(indo){
   const idx=WORDS.findIndex(w=>w[0]===indo);
   if(idx>-1)WORDS.splice(idx,1);
   _s.delete(indo);learned.delete(indo);saveLearned();
+  const customScene=SCENES.find(s=>s.key==='custom');
+  if(customScene)customScene.words=customScene.words.filter(w=>w[0]!==indo);
   buildFilters();renderWordList();updateStats();
 }
 function renderSents(){
@@ -799,9 +815,13 @@ function saveCustomWords(arr){
 }
 
 let customWords=loadCustomWords();
-// 把自定义词合并进WORDS（启动时）
+// 把自定义词合并进WORDS和SCENES.custom（启动时）
+const customScene = SCENES.find(s=>s.key==='custom');
 customWords.forEach(w=>{
   if(!_s.has(w[0])){_s.add(w[0]);WORDS.push(w);}
+  if(customScene&&!customScene.words.find(x=>x[0]===w[0])){
+    customScene.words.push(w);
+  }
 });
 
 function addCustomWord(){
@@ -815,16 +835,20 @@ function addCustomWord(){
   saveCustomWords(customWords);
   WORDS.push(w);
   _s.add(indo);
+  // 同步到custom场景
+  const customScene=SCENES.find(s=>s.key==='custom');
+  if(customScene)customScene.words.push(w);
   // 自动标记已学
   markLearned(indo);
-  // 清空输入框
   document.getElementById('cw-indo').value='';
   document.getElementById('cw-ph').value='';
   document.getElementById('cw-cn').value='';
-  // 刷新
-  buildFilters();
-  renderWordList();
-  alert(`✓ "${indo}" 已添加到词库！`);
+  buildFilters();renderWordList();updateStats();
+  // 显示成功提示
+  const btn=document.querySelector('[onclick="addCustomWord()"]');
+  const orig=btn.textContent;
+  btn.textContent='✓ 已添加！';btn.style.background='#27ae60';
+  setTimeout(()=>{btn.textContent=orig;btn.style.background='#c0392b';},1500);
 }
 
 function go(t){
